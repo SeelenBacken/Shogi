@@ -1,0 +1,5 @@
+body{background-color:#ffefd5; font-size:12pt;}
+#title{position:fixed; width:100%; link-color:white; background-color:#d2b48c;}
+#content{float:left; font-size:15pt;}
+#image{position:fixed; right:30px; float:right;}
+#impressum{position:fixed; bottom:5px; width:100%; link-color:white; background-color:#d2b48c;}

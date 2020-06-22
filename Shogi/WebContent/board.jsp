@@ -9,6 +9,14 @@
 
     <style>
 
+        body {
+            user-drag: none;
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-drag: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
         table.playfield {
             border-collapse: collapse;
             color: gray;
@@ -23,7 +31,10 @@
         table.playfield td {
             width: 50px;
             height: 50px;
-            border: thin solid;
+            border: thick solid black;
+            text-align: center;
+            vertical-align: middle;
+            background: 	#deb887;
         }
 
         table.playfield td.over {
@@ -31,11 +42,11 @@
         }
 
         table.playfield tr:nth-child(odd) td:nth-child(odd){
-            background: rgba(50, 50, 50, 0.3);
+            background: #deb887;
         }
 
         table.playfield tr:nth-child(even) td:nth-child(even){
-            background: rgba(50, 50, 50, 0.3);
+            background: #deb887;
         }
 
         .playContainer {
@@ -64,11 +75,26 @@
 
         .piece {
             height: 40px;
-            width: 20px;
-            border: thin solid gray;
+            width: 40px;
             color: black;
             align-content: center;
             align-self: center;
+            margin: auto;
+        }
+
+        .king {
+            background-image: url("../img/king.png");
+            background-size: contain;
+        }
+
+        .knight {
+            background-image: url("../img/knight.png");
+            background-size: contain;
+        }
+
+        .horse {
+            background-image: url("../img/horse.png");
+            background-size: contain;
         }
 
 
@@ -81,115 +107,115 @@
 
 <section class="section">
 
-    <div class="playContainer container">
+    <div class="playContainer container" draggable="false">
         <table class="playfield" draggable="false">
             <tr>
                 <th>9</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="A9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="B9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="C9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="D9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="E9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="F9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="G9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="H9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="I9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
             </tr>
             <tr>
                 <th>8</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="A8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="B8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="C8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="D8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="E8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="F8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="G8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="H8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="I8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
             </tr>
             <tr>
                 <th>7</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="A7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="B7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="C7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="D7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="E7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="F7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="G7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="H7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="I7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
             </tr>
             <tr>
                 <th>6</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="A6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="B6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="C6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="D6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="E6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="F6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="G6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="H6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="I6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
             </tr>
             <tr>
                 <th>5</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="A5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="B5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="C5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="D5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="E5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="F5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="G5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="H5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="I5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
             </tr>
             <tr>
                 <th>4</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="A4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="B4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="C4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="D4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="E4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="F4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="G4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="H4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="I4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
             </tr>
             <tr>
                 <th>3</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="A3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="B3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="C3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="D3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="E3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="F3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="G3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="H3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="I3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
             </tr>
             <tr>
                 <th>2</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="A2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="B2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="C2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="D2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="E2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="F2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="G2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="H2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="I2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
             </tr>
             <tr>
                 <th>1</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td id="A1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="B1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="C1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="D1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="E1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="F1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="G1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="H1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
+                <td id="I1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
             </tr>
             <tr>
                 <th></th>
@@ -207,7 +233,9 @@
 
         <div class="graveyard">
             <div class="player1">
-                <div class="piece king" draggable="true">K</div>
+                <div id="king1" class="piece king" draggable="true" ondragstart="drag(event)"></div>
+                <div id="knight1" class="piece knight" draggable="true" ondragstart="drag(event)"></div>
+                <div id="horse1" class="piece horse" draggable="true" ondragstart="drag(event)"></div>
             </div>
             <div class="player2"></div>
         </div>
@@ -215,72 +243,41 @@
 </section>
 
 <script>
-    var dragSrcEl = null;
+    let fields = document.querySelectorAll('.playfield tr td')
 
-    function dragStartHandler(e) {
-        this.style.opacity = '0.8';
-
-        dragSrcEl = this;
-
-        e.dataTransfer.effectAllowed = 'move';
-        e.dataTransfer.setData('text/html', this.outerHTML);
+    function allowDrop(ev) {
+        ev.preventDefault();
     }
 
-    function dragOverHandler(e) {
-        if (e.preventDefault) {
-            e.preventDefault();
-        }
-
-        e.dataTransfer.dropEffect = "move";
-
-        return false;
-    }
-
-    function dragEnterHandler(e) {
-        this.classList.add('over');
-        console.log("over");
-    }
-
-    function dragLeaveHandler(e) {
-        this.classList.remove('over');
-    }
-
-    function dropHandler(e) {
-        if (e.stopPropagation) {
-            e.stopPropagation();
-        }
-
-        if ( dragSrcEl != this) {
-            dragSrcEl.innerHTHML = this.innerHTML;
-            this.innerHTML = e.dataTransfer.getData('text/html');
-        }
-
-        return false;
-    }
-
-    function dragEndHandler(e) {
-        console.log("end");
-        [].forEach.call(fields, function (field) {
-            field.classList.remove('over');
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+        fields.forEach(function (field) {
+            if(field.innerHTML == "") {
+                field.style.backgroundColor = "#ffffff";
+            }
         });
     }
+    function drop(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData('text');
+        ev.target.appendChild(document.getElementById(data));
+        fields.forEach(function (field) {
+            field.style.backgroundColor = "#deb887";
+        })
+    }
 
-    var pieces = document.querySelectorAll('.piece');
-    console.log(pieces);
-    [].forEach.call(pieces, function (piece) {
-        piece.addEventListener('dragstart', dragStartHandler, false);
-        piece.addEventListener('dragend', dragEndHandler, false);
-    });
+    //Function for testing piece creation
+    function newGame(){
+        var piece = document.createElement('div');
+        piece.classList.add('piece');
+        piece.classList.add('knight');
+        piece.id = "knight2";
+        piece.draggable = true;
+        piece.setAttribute("ondragstart", "drag(event)");
+        document.getElementById("A5").appendChild(piece);
+    }
 
-    var fields = document.querySelectorAll('.playfield tr td');
-    console.log(fields);
-    [].forEach.call(fields, function (field) {
-        field.addEventListener('dragenter', dragEnterHandler, false);
-        field.addEventListener('dragover', dragOverHandler, false);
-        field.addEventListener('dragleave', dragLeaveHandler, false);
-        field.addEventListener('drop', dropHandler, false);
-        field.draggable = false;
-    });
+    newGame();
 
 </script>
 </body>

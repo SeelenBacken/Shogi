@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel = "stylesheet" type = "text/css" href = "ShogiStyle.css">
 <title>Start playing Shogi</title>
+<link rel = "stylesheet" type = "text/css" href = "ShogiStyle.css">
 </head>
 <body>
 <div id = "title">
@@ -19,7 +19,14 @@
 	 <br>
 	Sie wissen bereits wie alles funktioniert?
 	Dann spielen Sie <a href = "board.jsp">hier</a> direkt los!
+	<br><br>
 	
+</div>
+
+<div id = "PlayButton">
+	<form action = "board.jsp">
+		<input type="button" name= "VerweisSpiel" value = "Play" onClick="board.jsp">
+	</form>
 </div>
 
 <div id = "image">

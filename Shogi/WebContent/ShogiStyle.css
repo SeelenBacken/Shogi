@@ -1,5 +1,51 @@
-body{background-color:#ffefd5; font-size:12pt;}
-#title{position:fixed; width:100%; link-color:white; background-color:#d2b48c;}
-#content{float:left; font-size:15pt;}
-#image{position:fixed; right:30px; float:right;}
-#impressum{position:fixed; bottom:5px; width:100%; link-color:white; background-color:#d2b48c;}
+body{
+	background-color:#ffefd5;
+}
+
+#title{
+	position: fixed;
+	top: 0;
+	width:100%;
+	height: 80px;
+	background-color:#d2b48c;
+}
+
+#content{
+	padding-top: 100px;
+	padding-down: 200 px;
+	float:left;
+	width: 59%;
+	height: 100%;
+}
+
+#button {
+ 	background-color: #d2b48c;
+  	border: none;
+	width: 200px;
+  	padding: 15px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+  	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+#image{
+	padding-top: 80px;
+	float:right;
+	height: 100%;
+	width: 39%;
+	border: none;
+}
+
+#impressum{
+	position:fixed;
+	bottom:0;
+	width:100%;
+	background-color:#d2b48c;
+}

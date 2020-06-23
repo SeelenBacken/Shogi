@@ -8,11 +8,11 @@ body{
 	width:100%;
 	height: 80px;
 	background-color:#d2b48c;
-	border: double;
 }
 
 #content{
 	padding-top: 100px;
+	padding-down: 200 px;
 	float:left;
 	width: 59%;
 	height: 100%;
@@ -47,6 +47,5 @@ body{
 	position:fixed;
 	bottom:0;
 	width:100%;
-	border: double;
 	background-color:#d2b48c;
 }

@@ -15,7 +15,6 @@
 <div id = "content">
 	<form method="get" action="board.jsp">
 		<input id="button" type="submit" value="Singleplayer"/><br><br>
-		<input id="button" type="submit" value="Multiplayer"/>
 	</form>
 	
 	

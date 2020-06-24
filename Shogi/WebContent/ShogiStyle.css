@@ -1,0 +1,80 @@
+body{
+	background-color:#ffefd5;
+}
+
+#title{
+	position: fixed;
+	top: 0;
+	width:100%;
+	height: 80px;
+	background-color:#d2b48c;
+}
+
+#content{
+	padding-top: 100px;
+	padding-down: 200 px;
+	padding-right: 500px;
+	float:left;
+	width: 59%;
+	height: 100%;
+}
+
+#button {
+ 	background-color: #d2b48c;
+  	border: none;
+	width: 200px;
+  	padding: 15px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+  	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+#image{
+	padding-top: 80px;
+	float:right;
+	height: 100%;
+	width: 39%;
+	border: none;
+}
+
+#impressum{
+	position:fixed;
+	bottom:0;
+	width:100%;
+	background-color:#d2b48c;
+}
+
+caption
+{
+	font-weight: bold;
+}
+
+table
+{
+	display: inline-block;
+	margin-right: 50px;
+	border-collapse: collapse;
+}
+
+th,td
+{
+	border: 1px solid black;
+	height: 100px;
+	width: 100px;
+	align:center;
+}
+
+#piece
+{
+	background: #d2b48c;
+	width: 15%;
+	height: 30px;
+	padding-left: 10px;
+}

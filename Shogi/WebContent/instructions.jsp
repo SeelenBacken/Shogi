@@ -5,30 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Shogi instructions</title>
-
-<style>
-  
-body{background-color:#ffefd5; font-size:12pt;}
-#title{position:fixed; width:100%; link-color:white; background-color:#d2b48c;}
-#content{float:left; font-size:15pt;}
-#image{position:fixed; right:30px; float:right;}
-#impressum{position:fixed; bottom:5px; width:100%; link-color:white; background-color:#d2b48c;}
-
-	table
-	{
-		display: inline-block;
-		margin-right: 50px;
-		border-collapse: collapse;
-	}
-
-	th,td
-	{
-		border: 1px solid black;
-		height: 100px;
-		width: 100px;
-		align:center;
-	}
-</style>
+<link rel = "stylesheet" type = "text/css" href = "ShogiStyle.css">
 
 </head>
 <body>
@@ -37,14 +14,13 @@ body{background-color:#ffefd5; font-size:12pt;}
 <h1>将棋 - Shogi Spielanleitung</h1>
 </div>
 
-<br><br><br><br>
 
 <div id = "content">
 
 <h3>Grundregeln</h3>
 Shogi ist ein strategigsches Spiel für zwei Personen, welches dem Schachspiel ähnelt. Gespielt wird auf einem Brett mit 9x9 Feldern. Die Spieler ziehen
 abwechselnd eine ihrer Figuren mit dem Ziel, den gegnerischen König zu schlagen. Wird der König bedroht, steht dieser im Schach und muss im nächsten Zug
-den Angriff auf den König abwehen. Die Figuren weisen unterschiedliche Bewegungsmuster auf, welche ebenfalls auf dieser Website beschrieben werden. Die 
+den Angriff auf den König abwehren. Die Figuren weisen unterschiedliche Bewegungsmuster auf, welche ebenfalls auf dieser Website beschrieben werden. Die 
 Richtung, in die der Stein zeigt, gibt den Spieler an, dem der Stein gehört.
 
 <br>
@@ -76,6 +52,10 @@ Figuren sind nicht befördert und können erst im folgenden Zug wieder beförder
 	<option value = "knight">Springer</option>
 	<option value = "king">König</option>
 </select>
+
+</div>
+
+<div id = "tables">
 
 <br><br>
 
@@ -354,9 +334,17 @@ Figuren sind nicht befördert und können erst im folgenden Zug wieder beförder
 
 </div>
 
+<div id = "impressum">
+	<br>
+	<strong>
+		<a href = "ImpressumShogi.jsp">Impressum</a>
+		<a href = "StartseiteShogi.jsp">Startseite</a>
+	</strong>
+	<br><br>
+</div>
+
 <script>
 
-hideAll();
 showTable();
 
 function showTable()
@@ -388,6 +376,7 @@ function showTable()
 		case "bishop":
 			document.getElementById("tableBishop").style.display = "inline-block";
 			document.getElementById("tableHorse").style.display = "inline-block";
+			document.getElementById("opBishop").style.background = "white";
 			break;
 			
 		case "rook":

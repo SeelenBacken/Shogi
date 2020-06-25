@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css">
 
     <style>
-
         body {
             user-drag: none;
             user-select: none;
@@ -80,24 +79,60 @@
             align-content: center;
             align-self: center;
             margin: auto;
-        }
-
-        .king {
-            background-image: url("../img/king.png");
             background-size: contain;
         }
 
-        .knight {
-            background-image: url("../img/knight.png");
+        #gravep1 .gravepiece {
+            height: 40px;
+            width: 40px;
+            color: black;
+            align-content: center;
+            align-self: center;
+            margin: auto;
             background-size: contain;
+            float: left;
         }
 
-        .horse {
-            background-image: url("../img/horse.png");
+        #gravep2 .gravepiece {
+            height: 40px;
+            width: 40px;
+            color: black;
+            align-content: center;
+            align-self: center;
+            margin: auto;
             background-size: contain;
+            float: left;
+            transform: rotate(180deg);
         }
 
+        .gLevel {
+            margin-top: 1em;
+        }
 
+        .king {background-image: url("../img/king.png");}
+        .rook {background-image: url("../img/rook.png");}
+        .bishop{background-image: url("../img/bishop.png")}
+        .silver{background-image: url("../img/silver.png")}
+        .gold{background-image: url("../img/gold.png")}
+        .lance{background-image: url("../img/lance.png")}
+        .pawn{background-image: url("../img/pawn.png")}
+        .knight {background-image: url("../img/knight.png");}
+        .horse {background-image: url("../img/horse.png");}
+
+        .p2Piece {
+            transform: rotate(180deg);
+        }
+
+        .pHighlight {
+            animation-name: backgroundHighlight;
+            animation-duration: 600ms;
+            background-color: gray !important;
+        }
+
+        @keyframes backgroundHighlight {
+            from {background-color: #deb887}
+            to {background-color: gray}
+        }
     </style>
 
 </head>
@@ -232,18 +267,74 @@
         </table>
 
         <div class="graveyard">
-            <div class="player1">
-                <div id="king1" class="piece king" draggable="true" ondragstart="drag(event)"></div>
-                <div id="knight1" class="piece knight" draggable="true" ondragstart="drag(event)"></div>
-                <div id="horse1" class="piece horse" draggable="true" ondragstart="drag(event)"></div>
+            <div id="gravep2" class="player2">
+                <nav class="level gLevel">
+                    <div class="level-item">
+                        <div id="knight2" class="gravepiece knight" draggable="true" ondragstart="drag(event)">0</div>
+                    </div>
+                    <div class="level-item">
+                        <div id="pawn2" class="gravepiece pawn" draggable="true" ondragstart="drag(event)">0</div>
+                    </div>
+                    <div class="level-item">
+                        <div id="lance2" class="gravepiece lance" draggable="true" ondragstart="drag(event)">0</div>
+                    </div>
+                </nav>
+                <nav class="level">
+                    <div class="level-item">
+                        <div id="gold2" class="gravepiece gold" draggable="true" ondragstart="drag(event)">0</div>
+                    </div>
+                    <div class="level-item">
+                        <div id="silver2" class="gravepiece silver" draggable="true" ondragstart="drag(event)">0</div>
+                    </div>
+                </nav>
+                <nav class="level">
+                    <div class="level-item">
+                        <div id="bishop2" class="gravepiece bishop" draggable="true" ondragstart="drag(event)">0</div>
+                    </div>
+                    <div class="level-item">
+                        <div id="rook2" class="gravepiece rook" draggable="true" ondragstart="drag(event)">0</div>
+                    </div>
+                </nav>
             </div>
-            <div class="player2"></div>
+            <div id="gravep1" class="player1">
+                <nav class="level gLevel">
+                    <div class="level-item">
+                        <div id="bishop1" class="gravepiece bishop" draggable="true" ondragstart="drag(event)">0</div>
+                    </div>
+                    <div class="level-item">
+                        <div id="rook1" class="gravepiece rook" draggable="true" ondragstart="drag(event)">0</div>
+                    </div>
+                </nav>
+                <nav class="level">
+                    <div class="level-item">
+                        <div id="gold1" class="gravepiece gold" draggable="true" ondragstart="drag(event)">0</div>
+                    </div>
+                    <div class="level-item">
+                        <div id="silver1" class="gravepiece silver" draggable="true" ondragstart="drag(event)">0</div>
+                    </div>
+                </nav>
+                <nav class="level">
+                    <div class="level-item">
+                        <div id="knight1" class="gravepiece knight" draggable="true" ondragstart="drag(event)">0</div>
+                    </div>
+                    <div class="level-item">
+                        <div id="pawn1" class="gravepiece pawn" draggable="true" ondragstart="drag(event)">0</div>
+                    </div>
+                    <div class="level-item">
+                        <div id="lance1" class="gravepiece lance" draggable="true" ondragstart="drag(event)">0</div>
+                    </div>
+                </nav>
+            </div>
         </div>
     </div>
 </section>
 
 <script>
     let fields = document.querySelectorAll('.playfield tr td')
+    let pieceCounter = {
+        king: 3,
+        bishop: 3,
+    }
 
     function allowDrop(ev) {
         ev.preventDefault();
@@ -253,20 +344,55 @@
         ev.dataTransfer.setData("text", ev.target.id);
         fields.forEach(function (field) {
             if(field.innerHTML == "") {
-                field.style.backgroundColor = "#ffffff";
+                field.classList.add('pHighlight');
+
             }
         });
     }
     function drop(ev) {
         ev.preventDefault();
-        var data = ev.dataTransfer.getData('text');
-        ev.target.appendChild(document.getElementById(data));
+
+        let target = document.getElementById(ev.target.id);
+        let hitter = document.getElementById(ev.dataTransfer.getData('text'));
+
+        if(!checkTarget(target, hitter)){
+            return false;
+        }
+
+        movePiece(ev, target, hitter);
+
         fields.forEach(function (field) {
-            field.style.backgroundColor = "#deb887";
+            field.classList.remove('pHighlight');
         })
     }
 
-    //Function for testing piece creation
+    function checkTarget(target, hitter) {
+        if(target === hitter){
+            return false;
+        } else if(target.classList.contains('p1Piece') && hitter.classList.contains('p1Piece')) {
+            console.log('False');
+            return;
+        } else if (target.hasChildNodes()) {
+            if(target.firstChild.classList.contains('p1Piece') && hitter.classList.contains('p1Piece')) {
+                return;
+            }
+        } else return true;
+    }
+
+    function movePiece(ev, target, hitter) {
+        console.log("Hitter: " + document.getElementById(ev.target.id).parentNode);
+        if(target.hasChildNodes()){
+            target.firstChild.remove();
+            target.appendChild(hitter);
+        }else if(target.classList.contains('piece')){
+            target.parentNode.append(hitter);
+            console.log("test");
+            hit(target, hitter);
+        }else{
+            ev.target.appendChild(hitter);
+        }
+    }
+
     function newGame(){
         var piece = document.createElement('div');
         piece.classList.add('piece');
@@ -275,9 +401,53 @@
         piece.draggable = true;
         piece.setAttribute("ondragstart", "drag(event)");
         document.getElementById("A5").appendChild(piece);
+        document.getElementById("A6").appendChild(newKing(1));
+        document.getElementById("A7").appendChild(newKing(2));
+        document.getElementById("C6").appendChild(newBishop(1));
+    }
+
+    function newKing(playerNr) {
+        let piece = document.createElement('div');
+        piece.classList.add('piece');
+        piece.classList.add('king');
+        piece.classList.add(`p${playerNr}Piece`);
+        piece.id = `king${pieceCounter.king}`;
+        pieceCounter.king ++;
+        piece.draggable = true;
+        piece.setAttribute("ondragstart", "drag(event)");
+        return piece;
+    }
+
+    function newBishop(playerNr) {
+        let piece = document.createElement('div');
+        piece.classList.add('piece');
+        piece.classList.add('bishop');
+        piece.classList.add(`p${playerNr}Piece`);
+        piece.id = `bishop${pieceCounter.bishop}`;
+        pieceCounter.bishop ++;
+        piece.draggable = true;
+        piece.setAttribute("ondragstart", "drag(event)");
+        return piece;
+    }
+
+    function hit(target, hitter){
+        if(target.classList.contains("bishop")){
+            let bishop;
+            if(target.classList.contains("p1Piece")){
+                bishop = document.querySelector('#bishop2');
+            } else if (target.classList.contains("p2Piece")){
+                bishop = document.querySelector('#bishop1');
+            }
+            let count = bishop.innerHTML;
+            count ++;
+            bishop.innerHTML = count;
+        }
+        target.remove();
+        console.log('Hit');
     }
 
     newGame();
+
 
 </script>
 </body>

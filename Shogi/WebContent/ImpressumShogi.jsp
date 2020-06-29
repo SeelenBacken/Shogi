@@ -31,7 +31,9 @@ Bastian Sch&auml;fer,<br />
 Lorenz Seufert</p>
 
 <h2>Kontakt</h2>
-E-Mail: fabian.schwickert@dh-karslruhe.de</p>
+<p>E-Mail: fabian.schwickert@student.dhbw-karslruhe.de<br>
+Telefon: 015234000282</p>
+
 
 <h2>EU-Streitschlichtung</h2>
 <p>Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a>.<br /> Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>

@@ -13,10 +13,10 @@ body{
 #content{
 	padding-top: 100px;
 	padding-down: 200 px;
-<<<<<<< HEAD
 	float:left;
 	width: 59%;
 	height: 100%;
+	padding-right: 500px;
 }
 
 #button {
@@ -49,12 +49,6 @@ body{
 	bottom:0;
 	width:100%;
 	background-color:#d2b48c;
-}
-=======
-	padding-right: 500px;
-	float:left;
-	width: 59%;
-	height: 100%;
 }
 
 #button {
@@ -116,4 +110,3 @@ th,td
 	height: 30px;
 	padding-left: 10px;
 }
->>>>>>> refs/heads/Anleitung

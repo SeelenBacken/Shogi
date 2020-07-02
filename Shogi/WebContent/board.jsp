@@ -454,8 +454,8 @@
         let piece = document.createElement('div');
         piece.classList.add('piece');
         piece.classList.add('king');
-        piece.classList.add(`p${playerNr}Piece`);
-        piece.id = `king${pieceCounter.king}`;
+        piece.classList.add('p' + playerNr + 'Piece');
+        piece.id = 'king' + pieceCounter.king;
         pieceCounter.king ++;
         piece.draggable = true;
         piece.setAttribute("ondragstart", "drag(event)");
@@ -466,8 +466,8 @@
         let piece = document.createElement('div');
         piece.classList.add('piece');
         piece.classList.add('bishop');
-        piece.classList.add(`p${playerNr}Piece`);
-        piece.id = `bishop${pieceCounter.bishop}`;
+        piece.classList.add('p' + playerNr + 'Piece');
+        piece.id = 'bishop' + pieceCounter.bishop;
         pieceCounter.bishop ++;
         piece.draggable = true;
         piece.setAttribute("ondragstart", "drag(event)");
@@ -478,8 +478,8 @@
         let piece = document.createElement('div');
         piece.classList.add('piece');
         piece.classList.add('gold');
-        piece.classList.add(`p${playerNr}Piece`);
-        piece.id = `gold${pieceCounter.gold}`;
+        piece.classList.add('p' + playerNr + 'Piece');
+        piece.id = 'gold' + pieceCounter.gold;
         pieceCounter.gold ++;
         piece.draggable = true;
         piece.setAttribute("ondragstart", "drag(event)");
@@ -490,8 +490,8 @@
         let piece = document.createElement('div');
         piece.classList.add('piece');
         piece.classList.add('silver');
-        piece.classList.add(`p${playerNr}Piece`);
-        piece.id = `silver${pieceCounter.silver}`;
+        piece.classList.add('p' + playerNr + 'Piece');
+        piece.id = 'silver' + pieceCounter.silver;
         pieceCounter.silver ++;
         piece.draggable = true;
         piece.setAttribute("ondragstart", "drag(event)");
@@ -502,8 +502,8 @@
         let piece = document.createElement('div');
         piece.classList.add('piece');
         piece.classList.add('knight');
-        piece.classList.add(`p${playerNr}Piece`);
-        piece.id = `knight${pieceCounter.knight}`;
+        piece.classList.add('p' + playerNr + 'Piece');
+        piece.id = 'knight' + pieceCounter.knight;
         pieceCounter.knight ++;
         piece.draggable = true;
         piece.setAttribute("ondragstart", "drag(event)");
@@ -514,8 +514,8 @@
         let piece = document.createElement('div');
         piece.classList.add('piece');
         piece.classList.add('lance');
-        piece.classList.add(`p${playerNr}Piece`);
-        piece.id = `lance${pieceCounter.lance}`;
+        piece.classList.add('p' + playerNr + 'Piece');
+        piece.id = 'lance' + pieceCounter.lance;
         pieceCounter.lance ++;
         piece.draggable = true;
         piece.setAttribute("ondragstart", "drag(event)");
@@ -526,8 +526,8 @@
         let piece = document.createElement('div');
         piece.classList.add('piece');
         piece.classList.add('rook');
-        piece.classList.add(`p${playerNr}Piece`);
-        piece.id = `rook${pieceCounter.rook}`;
+        piece.classList.add('p' + playerNr + 'Piece');
+        piece.id = 'rook' + pieceCounter.rook;
         pieceCounter.rook ++;
         piece.draggable = true;
         piece.setAttribute("ondragstart", "drag(event)");
@@ -538,8 +538,8 @@
         let piece = document.createElement('div');
         piece.classList.add('piece');
         piece.classList.add('pawn');
-        piece.classList.add(`p${playerNr}Piece`);
-        piece.id = `pawn${pieceCounter.pawn}`;
+        piece.classList.add('p' + playerNr + 'Piece');
+        piece.id = 'pawn' + pieceCounter.pawn;
         pieceCounter.pawn ++;
         piece.draggable = true;
         piece.setAttribute("ondragstart", "drag(event)");

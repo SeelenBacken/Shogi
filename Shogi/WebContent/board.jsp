@@ -109,15 +109,15 @@
             margin-top: 1em;
         }
 
-        .king {background-image: url("../img/king.png");}
-        .rook {background-image: url("../img/rook.png");}
-        .bishop{background-image: url("../img/bishop.png")}
-        .silver{background-image: url("../img/silver.png")}
-        .gold{background-image: url("../img/gold.png")}
-        .lance{background-image: url("../img/lance.png")}
-        .pawn{background-image: url("../img/pawn.png")}
-        .knight {background-image: url("../img/knight.png");}
-        .horse {background-image: url("../img/horse.png");}
+        .king {background-image: url("../res/half/king.png");}
+        .rook {background-image: url("../res/half/rook.png");}
+        .bishop{background-image: url("../res/half/bishop.png")}
+        .silver{background-image: url("../res/half/silver.png")}
+        .gold{background-image: url("../res/half/gold.png")}
+        .lance{background-image: url("../res/half/lance.png")}
+        .pawn{background-image: url("../res/half/pawn.png")}
+        .knight {background-image: url("../res/half/knight.png");}
+        .horse {background-image: url("../res/half/horse.png");}
 
         .p2Piece {
             transform: rotate(180deg);
@@ -334,6 +334,12 @@
     let pieceCounter = {
         king: 3,
         bishop: 3,
+        gold: 3,
+        silver: 3,
+        knight: 3,
+        lance: 3,
+        rook: 3,
+        pawn: 3,
     }
 
     function allowDrop(ev) {
@@ -370,7 +376,6 @@
         if(target === hitter){
             return false;
         } else if(target.classList.contains('p1Piece') && hitter.classList.contains('p1Piece')) {
-            console.log('False');
             return;
         } else if (target.hasChildNodes()) {
             if(target.firstChild.classList.contains('p1Piece') && hitter.classList.contains('p1Piece')) {
@@ -380,13 +385,11 @@
     }
 
     function movePiece(ev, target, hitter) {
-        console.log("Hitter: " + document.getElementById(ev.target.id).parentNode);
         if(target.hasChildNodes()){
             target.firstChild.remove();
             target.appendChild(hitter);
         }else if(target.classList.contains('piece')){
             target.parentNode.append(hitter);
-            console.log("test");
             hit(target, hitter);
         }else{
             ev.target.appendChild(hitter);
@@ -394,16 +397,57 @@
     }
 
     function newGame(){
-        var piece = document.createElement('div');
-        piece.classList.add('piece');
-        piece.classList.add('knight');
-        piece.id = "knight2";
-        piece.draggable = true;
-        piece.setAttribute("ondragstart", "drag(event)");
-        document.getElementById("A5").appendChild(piece);
-        document.getElementById("A6").appendChild(newKing(1));
-        document.getElementById("A7").appendChild(newKing(2));
-        document.getElementById("C6").appendChild(newBishop(1));
+
+
+        //Player1
+        document.getElementById("A1").appendChild(newLance(1));
+        document.getElementById("B1").appendChild(newKnight(1));
+        document.getElementById("C1").appendChild(newSilver(1));
+        document.getElementById("D1").appendChild(newGold(1));
+        document.getElementById("E1").appendChild(newKing(1));
+        document.getElementById("F1").appendChild(newGold(1));
+        document.getElementById("G1").appendChild(newSilver(1));
+        document.getElementById("H1").appendChild(newKnight(1));
+        document.getElementById("I1").appendChild(newLance(1));
+
+        document.getElementById("B2").appendChild(newBishop(1));
+        document.getElementById("H2").appendChild(newRook(1));
+
+        document.getElementById("A3").appendChild(newPawn(1));
+        document.getElementById("B3").appendChild(newPawn(1));
+        document.getElementById("C3").appendChild(newPawn(1));
+        document.getElementById("D3").appendChild(newPawn(1));
+        document.getElementById("E3").appendChild(newPawn(1));
+        document.getElementById("F3").appendChild(newPawn(1));
+        document.getElementById("G3").appendChild(newPawn(1));
+        document.getElementById("H3").appendChild(newPawn(1));
+        document.getElementById("I3").appendChild(newPawn(1));
+
+
+        //Player2
+        document.getElementById("A9").appendChild(newLance(2));
+        document.getElementById("B9").appendChild(newKnight(2));
+        document.getElementById("C9").appendChild(newSilver(2));
+        document.getElementById("D9").appendChild(newGold(2));
+        document.getElementById("E9").appendChild(newKing(2));
+        document.getElementById("F9").appendChild(newGold(2));
+        document.getElementById("G9").appendChild(newSilver(2));
+        document.getElementById("H9").appendChild(newKnight(2));
+        document.getElementById("I9").appendChild(newLance(2));
+
+        document.getElementById("H8").appendChild(newBishop(2));
+        document.getElementById("B8").appendChild(newRook(2));
+
+        document.getElementById("A7").appendChild(newPawn(2));
+        document.getElementById("B7").appendChild(newPawn(2));
+        document.getElementById("C7").appendChild(newPawn(2));
+        document.getElementById("D7").appendChild(newPawn(2));
+        document.getElementById("E7").appendChild(newPawn(2));
+        document.getElementById("F7").appendChild(newPawn(2));
+        document.getElementById("G7").appendChild(newPawn(2));
+        document.getElementById("H7").appendChild(newPawn(2));
+        document.getElementById("I7").appendChild(newPawn(2));
+
     }
 
     function newKing(playerNr) {
@@ -430,6 +474,78 @@
         return piece;
     }
 
+    function newGold(playerNr) {
+        let piece = document.createElement('div');
+        piece.classList.add('piece');
+        piece.classList.add('gold');
+        piece.classList.add(`p${playerNr}Piece`);
+        piece.id = `gold${pieceCounter.gold}`;
+        pieceCounter.gold ++;
+        piece.draggable = true;
+        piece.setAttribute("ondragstart", "drag(event)");
+        return piece;
+    }
+
+    function newSilver(playerNr) {
+        let piece = document.createElement('div');
+        piece.classList.add('piece');
+        piece.classList.add('silver');
+        piece.classList.add(`p${playerNr}Piece`);
+        piece.id = `silver${pieceCounter.silver}`;
+        pieceCounter.silver ++;
+        piece.draggable = true;
+        piece.setAttribute("ondragstart", "drag(event)");
+        return piece;
+    }
+
+    function newKnight(playerNr) {
+        let piece = document.createElement('div');
+        piece.classList.add('piece');
+        piece.classList.add('knight');
+        piece.classList.add(`p${playerNr}Piece`);
+        piece.id = `knight${pieceCounter.knight}`;
+        pieceCounter.knight ++;
+        piece.draggable = true;
+        piece.setAttribute("ondragstart", "drag(event)");
+        return piece;
+    }
+
+    function newLance(playerNr) {
+        let piece = document.createElement('div');
+        piece.classList.add('piece');
+        piece.classList.add('lance');
+        piece.classList.add(`p${playerNr}Piece`);
+        piece.id = `lance${pieceCounter.lance}`;
+        pieceCounter.lance ++;
+        piece.draggable = true;
+        piece.setAttribute("ondragstart", "drag(event)");
+        return piece;
+    }
+
+    function newRook(playerNr) {
+        let piece = document.createElement('div');
+        piece.classList.add('piece');
+        piece.classList.add('rook');
+        piece.classList.add(`p${playerNr}Piece`);
+        piece.id = `rook${pieceCounter.rook}`;
+        pieceCounter.rook ++;
+        piece.draggable = true;
+        piece.setAttribute("ondragstart", "drag(event)");
+        return piece;
+    }
+
+    function newPawn(playerNr) {
+        let piece = document.createElement('div');
+        piece.classList.add('piece');
+        piece.classList.add('pawn');
+        piece.classList.add(`p${playerNr}Piece`);
+        piece.id = `pawn${pieceCounter.pawn}`;
+        pieceCounter.pawn ++;
+        piece.draggable = true;
+        piece.setAttribute("ondragstart", "drag(event)");
+        return piece;
+    }
+
     function hit(target, hitter){
         if(target.classList.contains("bishop")){
             let bishop;
@@ -441,12 +557,72 @@
             let count = bishop.innerHTML;
             count ++;
             bishop.innerHTML = count;
+        } else if (target.classList.contains("pawn")){
+            let pawn;
+            if(target.classList.contains("p1Piece")){
+                pawn = document.querySelector('#pawn2');
+            } else if (target.classList.contains("p2Piece")){
+                pawn = document.querySelector('#pawn1');
+            }
+            let count = pawn.innerHTML;
+            count ++;
+            pawn.innerHTML = count;
+        } else if(target.classList.contains("gold")){
+            let gold;
+            if(target.classList.contains("p1Piece")){
+                gold = document.querySelector('#gold2');
+            } else if (target.classList.contains("p2Piece")){
+                gold = document.querySelector('#gold1');
+            }
+            let count = gold.innerHTML;
+            count ++;
+            gold.innerHTML = count;
+        } else if(target.classList.contains("silver")){
+            let silver;
+            if(target.classList.contains("p1Piece")){
+                silver = document.querySelector('#silver2');
+            } else if (target.classList.contains("p2Piece")){
+                silver = document.querySelector('#silver1');
+            }
+            let count = silver.innerHTML;
+            count ++;
+            silver.innerHTML = count;
+        } else if(target.classList.contains("knight")){
+            let knight;
+            if(target.classList.contains("p1Piece")){
+                knight = document.querySelector('#knight2');
+            } else if (target.classList.contains("p2Piece")){
+                knight = document.querySelector('#knight1');
+            }
+            let count = knight.innerHTML;
+            count ++;
+            knight.innerHTML = count;
+        } else if(target.classList.contains("lance")){
+            let lance;
+            if(target.classList.contains("p1Piece")){
+                lance = document.querySelector('#lance2');
+            } else if (target.classList.contains("p2Piece")){
+                lance = document.querySelector('#lance1');
+            }
+            let count = lance.innerHTML;
+            count ++;
+            lance.innerHTML = count;
+        } else if(target.classList.contains("rook")){
+            let rook;
+            if(target.classList.contains("p1Piece")){
+                rook = document.querySelector('#rook2');
+            } else if (target.classList.contains("p2Piece")){
+                rook = document.querySelector('#rook1');
+            }
+            let count = rook.innerHTML;
+            count ++;
+            rook.innerHTML = count;
         }
         target.remove();
-        console.log('Hit');
     }
 
     newGame();
+
 
 
 </script>

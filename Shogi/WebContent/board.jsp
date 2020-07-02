@@ -109,15 +109,15 @@
             margin-top: 1em;
         }
 
-        .king {background-image: url("../res/half/king.png");}
-        .rook {background-image: url("../res/half/rook.png");}
-        .bishop{background-image: url("../res/half/bishop.png")}
-        .silver{background-image: url("../res/half/silver.png")}
-        .gold{background-image: url("../res/half/gold.png")}
-        .lance{background-image: url("../res/half/lance.png")}
-        .pawn{background-image: url("../res/half/pawn.png")}
-        .knight {background-image: url("../res/half/knight.png");}
-        .horse {background-image: url("../res/half/horse.png");}
+        .king {background-image: url("res/half/king.png");}
+        .rook {background-image: url("res/half/rook.png");}
+        .bishop{background-image: url("res/half/bishop.png")}
+        .silver{background-image: url("res/half/silver.png")}
+        .gold{background-image: url("res/half/gold.png")}
+        .lance{background-image: url("res/half/lance.png")}
+        .pawn{background-image: url("res/half/pawn.png")}
+        .knight {background-image: url("res/half/knight.png");}
+        .horse {background-image: url("res/half/horse.png");}
 
         .p2Piece {
             transform: rotate(180deg);

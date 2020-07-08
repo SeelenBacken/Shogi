@@ -1,6 +1,7 @@
 package dataclasses;
 
 import java.security.InvalidParameterException;
+import java.util.ArrayList;
 
 import enums.FigureType;
 import enums.TeamType;
@@ -11,7 +12,7 @@ public class Figure {
 
 	private final TeamType team;
 
-	public Figure(FigureType type, FigureType changeType, TeamType team) {
+	private Figure(FigureType type, FigureType changeType, TeamType team) {
 		this.type = type;
 		this.changeType = changeType;
 		this.team = team;
@@ -44,6 +45,30 @@ public class Figure {
 			type = changeType;
 			changeType = temp;
 		}
+	}
+
+	public boolean canMoveThere(Vector2 currPos, Vector2 targetPos, GameBoard board) {
+		return canMoveThere(currPos, targetPos, board, null);
+	}
+
+	public boolean canMoveThere(Vector2 currPos, Vector2 targetPos, GameBoard board, ArrayList<Vector2> path) {
+		Vector2 move = Vector2.sub(targetPos, currPos);
+		if (isValidMove(move) == false) {
+			return false;
+		}
+		boolean calculatePath = path != null;
+		move.shortenIfPossible();
+		Vector2 currPosCopy = Vector2.add(currPos, move);
+		for (; !currPosCopy.equals(targetPos); currPosCopy = Vector2.add(currPosCopy, move)) {
+			if (board.ensureTeamTypeForPosition(currPosCopy) == TeamType.NONE) {
+				if (calculatePath) {
+					path.add(new Vector2(currPosCopy));
+				}
+				continue;
+			}
+			return false;
+		}
+		return team != board.ensureTeamTypeForPosition(currPosCopy);
 	}
 
 	public boolean isValidMove(Vector2 move) {
@@ -88,5 +113,45 @@ public class Figure {
 
 	private boolean canChangeType() {
 		return changeType != FigureType.UNDEFINED;
+	}
+
+	public static Figure getKing(TeamType team) {
+		return new Figure(FigureType.KING, FigureType.UNDEFINED, team);
+	}
+
+	public static Figure getTower(TeamType team) {
+		return new Figure(FigureType.TOWER, FigureType.DRAGON, team);
+	}
+
+	public static Figure getBishop(TeamType team) {
+		return new Figure(FigureType.BISHOP, FigureType.HORSE, team);
+	}
+
+	public static Figure getGoldenGeneral(TeamType team) {
+		return new Figure(FigureType.GOLDEN_GENERAL, FigureType.UNDEFINED, team);
+	}
+
+	public static Figure getSilverGeneral(TeamType team) {
+		return new Figure(FigureType.SILVER_GENERAL, FigureType.GOLDEN_GENERAL, team);
+	}
+
+	public static Figure getKnight(TeamType team) {
+		return new Figure(FigureType.KNIGHT, FigureType.GOLDEN_GENERAL, team);
+	}
+
+	public static Figure getLance(TeamType team) {
+		return new Figure(FigureType.LANCE, FigureType.GOLDEN_GENERAL, team);
+	}
+
+	public static Figure getPawn(TeamType team) {
+		return new Figure(FigureType.PAWN, FigureType.GOLDEN_GENERAL, team);
+	}
+
+	public static Figure getDragon(TeamType team) {
+		return new Figure(FigureType.PAWN, FigureType.UNDEFINED, team);
+	}
+
+	public static Figure getHorse(TeamType team) {
+		return new Figure(FigureType.PAWN, FigureType.UNDEFINED, team);
 	}
 }

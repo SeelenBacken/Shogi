@@ -8,70 +8,7 @@
 		<meta charset="UTF-8">
 		<title>Instructions</title>
 		<link rel = "stylesheet" type = "text/css" href = "../css/MainStyle.css">
-		<style>
-
-			#button {
-			 	background-color: #d2b48c;
-			  	border: none;
-				width: 200px;
-			  	padding: 15px 32px;
-			  	text-align: center;
-			  	text-decoration: none;
-			  	display: inline-block;
-			  	font-size: 16px;
-			  	margin: 0;
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				-ms-transform: translate(-50%, -50%);
-				transform: translate(-50%, -50%);
-			}
-
-			#image{
-				padding-top: 80px;
-				float:right;
-				height: 100%;
-				width: 39%;
-				border: none;
-			}
-
-			#impressum{
-				position:fixed;
-				bottom:0;
-				width:100%;
-				background-color:#d2b48c;
-			}
-
-			caption
-			{
-				font-weight: bold;
-			}
-
-			table
-			{
-				display: inline-block;
-				margin-right: 50px;
-				border-collapse: collapse;
-			}
-
-			th,td
-			{
-				border: 1px solid black;
-				height: 100px;
-				width: 100px;
-				align:center;
-			}
-
-			#piece
-			{
-				background: #d2b48c;
-				width: 15%;
-				height: 30px;
-				padding-left: 10px;
-			}
-
-		</style>
-
+        <link rel = "stylesheet" type = "text/css" href = "../css/InstructionStyle.css">
 	</head>
 	
 	<body>
@@ -669,7 +606,8 @@
 					<td></td>
 					<td></td>
 				</tr>
-			</table>	
+			</table>
+            <br><br><br>
 		</div>
 		
 		<footer>

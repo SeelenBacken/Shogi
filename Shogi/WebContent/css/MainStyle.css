@@ -53,7 +53,7 @@ body{
 
 /*header*/
 #title{
-    position: fixed;
+    position: absolute;
     top: 0;
     margin-left: -8px;
     width:100%;

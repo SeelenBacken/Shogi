@@ -62,10 +62,10 @@
 			
 			<p>
 				Quelle: <a href="https://www.e-recht24.de">e-recht24.de</a>
+                <br><br>
 			</p>
 			
 		</div>
-		<br><br><br><br>
 	</body>
 	
 	<footer>

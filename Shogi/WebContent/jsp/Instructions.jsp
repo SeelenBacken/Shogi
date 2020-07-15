@@ -8,8 +8,8 @@
 		<meta charset="UTF-8">
 		<title>Instructions</title>
 		<link rel = "stylesheet" type = "text/css" href = "../css/MainStyle.css">
-		<!--<style>
-		
+		<style>
+
 			#button {
 			 	background-color: #d2b48c;
 			  	border: none;
@@ -26,7 +26,7 @@
 				-ms-transform: translate(-50%, -50%);
 				transform: translate(-50%, -50%);
 			}
-			
+
 			#image{
 				padding-top: 80px;
 				float:right;
@@ -34,26 +34,26 @@
 				width: 39%;
 				border: none;
 			}
-			
+
 			#impressum{
 				position:fixed;
 				bottom:0;
 				width:100%;
 				background-color:#d2b48c;
 			}
-			
+
 			caption
 			{
 				font-weight: bold;
 			}
-			
+
 			table
 			{
 				display: inline-block;
 				margin-right: 50px;
 				border-collapse: collapse;
 			}
-			
+
 			th,td
 			{
 				border: 1px solid black;
@@ -61,7 +61,7 @@
 				width: 100px;
 				align:center;
 			}
-			
+
 			#piece
 			{
 				background: #d2b48c;
@@ -69,9 +69,9 @@
 				height: 30px;
 				padding-left: 10px;
 			}
-		
+
 		</style>
-	-->
+
 	</head>
 	
 	<body>
@@ -675,7 +675,7 @@
 		<footer>
 			<a href = "../jsp/Impressum.jsp" class="footer-buttons">Impressum</a>
 			<a href = "../jsp/Instructions.jsp" class="footer-buttons">Anleitung</a>
-			
+
 			<i style="font-size:15px; padding: 2px; float: right"> ©2020 DHBW Karlsruhe All rights reserved.</i>
 		</footer>
 		

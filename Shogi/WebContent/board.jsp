@@ -336,6 +336,11 @@
         ev.preventDefault();
     }
     function drag(ev) {
+    	
+        fields.forEach(function (field) {
+            field.classList.remove('pHighlight');
+        })
+        
         ev.dataTransfer.setData("text", ev.target.id);
         if (!ev.target.classList.contains("gravepiece")) {
        		highlightForPiece(ev.target);
@@ -725,6 +730,7 @@
     }
     
     newGame();
+
 </script>
 </body>
 </html>

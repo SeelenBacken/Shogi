@@ -289,17 +289,79 @@
 	    		return false;
 	        } else return true;
 	    }
-	    
+
+        function summonPiece(target, gravePiece) {
+            let playerNr = 0;
+            if(gravePiece.parentNode.parentNode.parentNode.id == "gravep1") {
+                playerNr = 1;
+            }else if(gravePiece.parentNode.parentNode.parentNode.id == "gravep2") {
+                playerNr = 2;
+            }
+            if(gravePiece.innerHTML >= 1) {
+                gravePiece.innerHTML = gravePiece.innerHTML - 1;
+                if (gravePiece.classList.contains('bishop')) {
+                    target.appendChild(newBishop(playerNr));
+                } else if (gravePiece.classList.contains("gold")) {
+                    target.appendChild(newGold(playerNr));
+                } else if (gravePiece.classList.contains("silver")) {
+                    target.appendChild(newSilver(playerNr));
+                } else if (gravePiece.classList.contains("knight")) {
+                    target.appendChild(newKnight(playerNr));
+                } else if (gravePiece.classList.contains("lance")) {
+                    target.appendChild(newLance(playerNr));
+                } else if (gravePiece.classList.contains("rook")) {
+                    target.appendChild(newRook(playerNr));
+                } else if (gravePiece.classList.contains("pawn")) {
+                    target.appendChild(newPawn(playerNr));
+                }
+
+            }
+        }
+
 	    function movePiece(ev, target, hitter) {
-	        if(target.hasChildNodes()){
-	            target.firstChild.remove();
-	            target.appendChild(hitter);
-	        }else if(target.classList.contains('piece')){
-	            target.parentNode.append(hitter);
-	            hit(target, hitter);
-	        }else{
-	            ev.target.appendChild(hitter);
-	        }
+            if(hitter.classList.contains('gravepiece')){
+                summonPiece(target, hitter);
+                return;
+            }
+
+            if(target.hasChildNodes()){
+                target.firstChild.remove();
+                target.appendChild(hitter);
+                if(target.id.slice(1) <= 3) {
+                    upgrade(hitter);
+                }
+            }else if(target.classList.contains('piece')){
+                if(hitter.classList.contains("p1Piece")) {
+                    if (target.parentNode.id.slice(1) >= 7) {
+                        hitter.upgradeable = "true";
+                    } else {
+                        hitter.upgradeable = "false";
+                    }
+                } else if(hitter.classList.contains("p2Piece")) {
+                    if(target.parentNode.id.slice(1) <= 3) {
+                        hitter.upgradeable = "true";
+                    } else {
+                        hitter.upgradeable = "false";
+                    }
+                }
+                target.parentNode.append(hitter);
+                hit(target, hitter);
+            }else{
+                if(hitter.classList.contains("p1Piece")) {
+                    if (target.id.slice(1) >= 7) {
+                        hitter.upgradeable = "true";
+                    } else {
+                        hitter.upgradeable = "false";
+                    }
+                } else if(hitter.classList.contains("p2Piece")) {
+                    if(target.id.slice(1) <= 3) {
+                        hitter.upgradeable = "true";
+                    } else {
+                        hitter.upgradeable = "false";
+                    }
+                }
+                ev.target.appendChild(hitter);
+            }
 	    }
 	    
 	    function newGame(board, wPrison, bPrison){
@@ -520,7 +582,16 @@
 	        }
 	        target.remove();
 	    }
-	    
+
+        function upgrade(ev, piece){
+            ev.preventDefault();
+            if(this.upgradeable == "true") {
+                console.log("Upgrade");
+            } else {
+                console.log("No Upgrade")
+            }
+        }
+
 	 	// Zugmöglichkeiten anzeigen
 	    function numberToLetter(n)
 	    {

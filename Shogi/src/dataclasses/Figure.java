@@ -208,7 +208,7 @@ public class Figure {
 			path += ((team == TeamType.WHITE) ? "king" : "jewel");
 			break;
 		case TOWER:
-			path += "rook";
+			path += "tower";
 			break;
 		case BISHOP:
 			path += "bishop";

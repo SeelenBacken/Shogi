@@ -56,8 +56,7 @@ public class GameBean {
 	public Player getBlack() {
 		return black;
 	}
-	
-	//-------------------------------------------------------------
+  
 	public int getPlayerTeam(int x, int y) {
 		if(this.getBoard().getBoard()[x][y] != null) {
 			Player p = (this.getBlack().getName().equals("AI")) ? this.getWhite() : this.getBlack();
@@ -68,8 +67,6 @@ public class GameBean {
 		return 1;
 		
 	}
-	
-	//___-------------------------------------------------------
 
 	/**
 	 * Getter of the game board.

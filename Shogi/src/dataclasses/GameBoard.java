@@ -108,6 +108,21 @@ public class GameBoard {
 	public void clearPossibleTurns() {
 		possibleTurns.clear();
 	}
+	
+	public void moveOnBoard(Vector2 hitter, Vector2 target) {
+		if(this.getBoard()[target.getX()][target.getY()] == null) {
+			this.getBoard()[target.getX()][target.getY()] = this.getBoard()[hitter.getX()][hitter.getY()];
+		} else {
+			if(!this.getBoard()[target.getX()][target.getY()].getTeam().equals(this.getBoard()[hitter.getX()][hitter.getY()].getTeam())) {
+				if(this.getBoard()[hitter.getX()][hitter.getY()].getTeam().equals(TeamType.BLACK)) {
+					this.getBlackPrison().add(this.getBoard()[target.getX()][target.getY()]);
+				} else {
+					this.getWhitePrison().add(this.getBoard()[target.getX()][target.getY()]);
+				}
+				this.getBoard()[target.getX()][target.getY()] = this.getBoard()[hitter.getX()][hitter.getY()];
+			}
+		}
+	}
 
 	/**
 	 * Tries to remove the specified figure from a prison.
@@ -243,7 +258,7 @@ public class GameBoard {
 		default:
 			throw new IllegalArgumentException();
 		}
-		int x = size / 2 + 1;
+		int x = size / 2;
 		return new Vector2(x, y);
 	}
 
@@ -263,11 +278,11 @@ public class GameBoard {
 				board[x][size - 1] = Figure.getLance(TeamType.BLACK);
 			} else if (x == 1 || x == size - 2) {
 				if (x == 1) {
-					board[x][1] = Figure.getBishop(TeamType.WHITE);
-					board[x][size - 2] = Figure.getTower(TeamType.BLACK);
-				} else {
 					board[x][1] = Figure.getTower(TeamType.WHITE);
 					board[x][size - 2] = Figure.getBishop(TeamType.BLACK);
+				} else {
+					board[x][1] = Figure.getBishop(TeamType.WHITE);
+					board[x][size - 2] = Figure.getTower(TeamType.BLACK);
 				}
 				board[x][0] = Figure.getKnight(TeamType.WHITE);
 				board[x][size - 1] = Figure.getKnight(TeamType.BLACK);

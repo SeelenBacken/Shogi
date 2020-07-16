@@ -56,6 +56,17 @@ public class GameBean {
 	public Player getBlack() {
 		return black;
 	}
+  
+	public int getPlayerTeam(int x, int y) {
+		if(this.getBoard().getBoard()[x][y] != null) {
+			Player p = (this.getBlack().getName().equals("AI")) ? this.getWhite() : this.getBlack();
+			
+			int res = (this.getBoard().getBoard()[x][y].getTeam().equals(p.getTeam())) ? 1 : 2;
+			return res;
+		} 
+		return 1;
+		
+	}
 
 	/**
 	 * Getter of the game board.
@@ -64,6 +75,16 @@ public class GameBean {
 	 */
 	public GameBoard getBoard() {
 		return board;
+	}
+	
+	
+	/**
+	 * Setter of the round. Should only used with 1 or -1.
+	 * 
+	 * @param i the number of rounds to be incremented.
+	 */
+	public void setRound(int i) {
+		this.round += i;
 	}
 
 	/**

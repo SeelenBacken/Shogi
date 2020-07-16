@@ -198,7 +198,7 @@ public class Figure {
 	 * 
 	 * @return the relative file path of the picture as a String
 	 */
-	public String getPicturePath() {
+	public String getPicturePath() {		
 		if (team == TeamType.NONE) {
 			throw new IllegalStateException("Team of this figure is " + TeamType.NONE + "!");
 		}

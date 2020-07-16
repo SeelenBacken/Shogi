@@ -84,6 +84,7 @@ mode(){
 	<jsp:include page="board.jsp">
         <jsp:param name="param1" value="TraditionalBoard.css"/>
     </jsp:include>
+   
     
 <div id = "content">
 	 

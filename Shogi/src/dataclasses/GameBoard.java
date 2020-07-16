@@ -123,6 +123,10 @@ public class GameBoard {
 			}
 		}
 	}
+	
+	public boolean figureWouldCheckEnemy(Vector2 figurePos, Figure f) {
+		return false;
+	}
 
 	/**
 	 * Tries to remove the specified figure from a prison.

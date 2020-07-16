@@ -89,14 +89,14 @@ table.playfield tr:nth-child(even) td:nth-child(even){
 .gLevel {
     margin-top: 1em;
 }
-.king {background-image: url("../res/half/king.png");}
-.rook {background-image: url("../res/half/rook.png");}
-.bishop{background-image: url("../res/half/bishop.png")}
-.silver{background-image: url("../res/half/silver.png")}
-.gold{background-image: url("../res/half/gold.png")}
-.lance{background-image: url("../res/half/lance.png")}
-.pawn{background-image: url("../res/half/pawn.png")}
-.knight {background-image: url("../res/half/knight.png");}
+.KING {background-image: url("../res/half/king.png");}
+.TOWER {background-image: url("../res/half/rook.png");}
+.BISHOP{background-image: url("../res/half/bishop.png")}
+.SILVER_GENERAL{background-image: url("../res/half/silver.png")}
+.GOLDEN_GENERAL{background-image: url("../res/half/gold.png")}
+.LANCE{background-image: url("../res/half/lance.png")}
+.PAWN{background-image: url("../res/half/pawn.png")}
+.KNIGHT{background-image: url("../res/half/knight.png");}
 .horse {background-image: url("../res/half/horse.png");}
 .p2Piece {
     transform: rotate(180deg);

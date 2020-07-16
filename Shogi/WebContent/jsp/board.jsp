@@ -25,169 +25,94 @@
 		<div class="playContainer container" draggable="false">
 			<table class="playfield" draggable="false">
 				<tr>
-
-					<form method="GET" action="http://localhost:8080/Shogi/Controller">
-						<input name="submitMove" type="submit" value="Sichern"
-							class="Button" /> <input name="undoMove" type="submit"
-							value="Undo" class="Button" />
+			         	
+					<form method="GET" action="http://localhost:8080/Shogi/Controller">	
+						<input name="undoMove" type="submit" value="Undo" class="Button" />
+							
+							<!-- Nur zu Test Zwecken.
+							<input name="Xh" type="text" value="C" hidden="hidden">
+							<input name="Yh" type="text" value="2" hidden="hidden">
+							<input name="Xt" type="text" value="D" hidden="hidden">
+							<input name="Yt" type="text" value="3" hidden="hidden">
+							<input name="Xc" type="text" value="A" hidden="hidden">
+							<input name="Yc" type="text" value="0" hidden="hidden">
+							--> 
 					</form>
-
 				</tr>
-				<tr>
-					<th>9</th>
-					<td id="A9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="B9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="C9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="D9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="E9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="F9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="G9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="H9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="I9" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-				</tr>
-				<tr>
-					<th>8</th>
-					<td id="A8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="B8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="C8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="D8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="E8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="F8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="G8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="H8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="I8" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-				</tr>
-				<tr>
-					<th>7</th>
-					<td id="A7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="B7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="C7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="D7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="E7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="F7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="G7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="H7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="I7" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-				</tr>
-				<tr>
-					<th>6</th>
-					<td id="A6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="B6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="C6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="D6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="E6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="F6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="G6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="H6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="I6" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-				</tr>
-				<tr>
-					<th>5</th>
-					<td id="A5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="B5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="C5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="D5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="E5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="F5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="G5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="H5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="I5" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-				</tr>
-				<tr>
-					<th>4</th>
-					<td id="A4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="B4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="C4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="D4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="E4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="F4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="G4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="H4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="I4" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-				</tr>
-				<tr>
-					<th>3</th>
-					<td id="A3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="B3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="C3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="D3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="E3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="F3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="G3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="H3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="I3" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-				</tr>
-				<tr>
-					<th>2</th>
-					<td id="A2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="B2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="C2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="D2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="E2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="F2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="G2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="H2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="I2" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-				</tr>
-				<tr>
-					<th>1</th>
-					<td id="A1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="B1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="C1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="D1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="E1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="F1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="G1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="H1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-					<td id="I1" ondragover="allowDrop(event)" ondrop="drop(event)"></td>
-				</tr>
-				<tr>
-					<th></th>
-					<th>A</th>
-					<th>B</th>
-					<th>C</th>
-					<th>D</th>
-					<th>E</th>
-					<th>F</th>
-					<th>G</th>
-					<th>H</th>
-					<th>I</th>
-				</tr>
+		            
+		            <c:forEach begin="1" end="9" var="i" >
+		            
+		            	<tr>
+		            	
+		            		<th><c:out value="${i}" /></th>
+		            		
+		            		<c:forEach begin="1" end="9" var="j">
+		                		
+		                		<td id="${String.valueOf('ABCDEFGHI').charAt(j - 1)}${i}" ondragover="allowDrop(event)" ondrop="drop(event)">
+		                			
+		                			<c:if test = "${g.getBoard().getBoard()[j - 1][i - 1] != null}">
+			                			
+			                			<div class="piece p${g.getPlayerTeam(j - 1,i - 1)}Piece ${g.getBoard().getBoard()[j - 1][i - 1].getType()}" onclick="upgrade(event, this.parentNode)" ondragstart="drag(event)" draggable="true" 
+			                			></div>
+		                			
+		                			</c:if>
+		                		
+		                		</td>
+		                		
+		            		</c:forEach>
+		            	
+		            	</tr>
+		            	
+		            </c:forEach>
+		            
+		            
+		            <tr>
+		                <th></th>
+		                <th>A</th>
+		                <th>B</th>
+		                <th>C</th>
+		                <th>D</th>
+		                <th>E</th>
+		                <th>F</th>
+		                <th>G</th>
+		                <th>H</th>
+		                <th>I</th>
+		            </tr>
 			</table>
 
 			<div class="graveyard">
 				<div id="gravep2" class="player2">
 					<nav class="level gLevel">
 						<div class="level-item">
-							<div id="knight2" class="gravepiece knight" draggable="true"
+							<div id="knight2" class="gravepiece KNIGHT" draggable="true"
 								ondragstart="drag(event)">0</div>
 						</div>
 						<div class="level-item">
-							<div id="pawn2" class="gravepiece pawn" draggable="true"
+							<div id="pawn2" class="gravepiece PAWN" draggable="true"
 								ondragstart="drag(event)">0</div>
 						</div>
 						<div class="level-item">
-							<div id="lance2" class="gravepiece lance" draggable="true"
-								ondragstart="drag(event)">0</div>
-						</div>
-					</nav>
-					<nav class="level">
-						<div class="level-item">
-							<div id="gold2" class="gravepiece gold" draggable="true"
-								ondragstart="drag(event)">0</div>
-						</div>
-						<div class="level-item">
-							<div id="silver2" class="gravepiece silver" draggable="true"
+							<div id="lance2" class="gravepiece LANCE" draggable="true"
 								ondragstart="drag(event)">0</div>
 						</div>
 					</nav>
 					<nav class="level">
 						<div class="level-item">
-							<div id="bishop2" class="gravepiece bishop" draggable="true"
+							<div id="gold2" class="gravepiece GOLDEN_GENERAL" draggable="true"
 								ondragstart="drag(event)">0</div>
 						</div>
 						<div class="level-item">
-							<div id="rook2" class="gravepiece rook" draggable="true"
+							<div id="silver2" class="gravepiece SILVER_GENERAL" draggable="true"
+								ondragstart="drag(event)">0</div>
+						</div>
+					</nav>
+					<nav class="level">
+						<div class="level-item">
+							<div id="bishop2" class="gravepiece BISHOP" draggable="true"
+								ondragstart="drag(event)">0</div>
+						</div>
+						<div class="level-item">
+							<div id="rook2" class="gravepiece TOWER" draggable="true"
 								ondragstart="drag(event)">0</div>
 						</div>
 					</nav>
@@ -195,35 +120,35 @@
 				<div id="gravep1" class="player1">
 					<nav class="level gLevel">
 						<div class="level-item">
-							<div id="bishop1" class="gravepiece bishop" draggable="true"
+							<div id="bishop1" class="gravepiece BISHOP" draggable="true"
 								ondragstart="drag(event)">0</div>
 						</div>
 						<div class="level-item">
-							<div id="rook1" class="gravepiece rook" draggable="true"
-								ondragstart="drag(event)">0</div>
-						</div>
-					</nav>
-					<nav class="level">
-						<div class="level-item">
-							<div id="gold1" class="gravepiece gold" draggable="true"
-								ondragstart="drag(event)">0</div>
-						</div>
-						<div class="level-item">
-							<div id="silver1" class="gravepiece silver" draggable="true"
+							<div id="rook1" class="gravepiece TOWER" draggable="true"
 								ondragstart="drag(event)">0</div>
 						</div>
 					</nav>
 					<nav class="level">
 						<div class="level-item">
-							<div id="knight1" class="gravepiece knight" draggable="true"
+							<div id="gold1" class="gravepiece GOLDEN_GENERAL" draggable="true"
 								ondragstart="drag(event)">0</div>
 						</div>
 						<div class="level-item">
-							<div id="pawn1" class="gravepiece pawn" draggable="true"
+							<div id="silver1" class="gravepiece SILVER_GENERAL" draggable="true"
+								ondragstart="drag(event)">0</div>
+						</div>
+					</nav>
+					<nav class="level">
+						<div class="level-item">
+							<div id="knight1" class="gravepiece KNIGHT" draggable="true"
 								ondragstart="drag(event)">0</div>
 						</div>
 						<div class="level-item">
-							<div id="lance1" class="gravepiece lance" draggable="true"
+							<div id="pawn1" class="gravepiece PAWN" draggable="true"
+								ondragstart="drag(event)">0</div>
+						</div>
+						<div class="level-item">
+							<div id="lance1" class="gravepiece LANCE" draggable="true"
 								ondragstart="drag(event)">0</div>
 						</div>
 					</nav>
@@ -234,6 +159,10 @@
 	</section>
 
 	<script>
+	
+		var xc = "Z";
+		var yc = -1;
+		
 	    let fields = document.querySelectorAll('.playfield tr td')
 	    let pieceCounter = {
 	        king: 3,
@@ -278,7 +207,22 @@
 	        fields.forEach(function (field) {
 	            field.classList.remove('pHighlight');
 	        });
+	        
+	        let xh = hitter.parentElement.Id.charAt(0);
+	        let yh = hitter.parentElement.Id.charAt(1);
+	        let xt = target.parentElement.Id.charAt(0);
+	        let yt = target.parentElement.Id.charAt(1);
+	        location.assign("http://localhost:8080/Shogi/Controller?Xh=" + xh + "&Yh=" + yh + "&Xt=" + xt + "&Yt=" + yt + "&Xc=" + xc + "&Yc=" + yc);
+	        
 	    }
+	    
+	    function upgrade(event, parent){
+	    	if(xc == "Z" && yc == -1){
+				let id = parent.id;
+		    	xc = id.charAt(0);
+		    	yc = id.charAt(1);
+			}
+	    
 	    function checkTarget(target, hitter) {
 	    	let field = target;
 	    	if (field.classList.contains("piece")){

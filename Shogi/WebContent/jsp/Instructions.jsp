@@ -8,7 +8,7 @@
 		<meta charset="UTF-8">
 		<title>Instructions</title>
 		<link rel = "stylesheet" type = "text/css" href = "../css/MainStyle.css">
-        <link rel = "stylesheet" type = "text/css" href = "../css/InstructionStyle.css">
+    <link rel = "stylesheet" type = "text/css" href = "../css/InstructionStyle.css">
 	</head>
 	
 	<body>
@@ -613,7 +613,6 @@
 		<footer>
 			<a href = "../jsp/Impressum.jsp" class="footer-buttons">Impressum</a>
 			<a href = "../jsp/Instructions.jsp" class="footer-buttons">Anleitung</a>
-
 			<i style="font-size:15px; padding: 2px; float: right"> ©2020 DHBW Karlsruhe All rights reserved.</i>
 		</footer>
 		

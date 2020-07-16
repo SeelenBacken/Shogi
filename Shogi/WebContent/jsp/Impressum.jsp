@@ -76,5 +76,4 @@
 		<i style="font-size:15px; padding: 2px; float: right"> ©2020 DHBW Karlsruhe All rights reserved.</i>
 	
 	</footer>
-
 </html>

@@ -8,12 +8,13 @@ public class Player {
 	private final TeamType team;
 
 	public Player(TeamType team) {
+		this.name = "Player";
 		this.team = team;
 	}
 
 	protected Player(TeamType team, String name) {
-		this(team);
-		this.setName(name);
+		this.team = team;
+		this.name = name;
 	}
 
 	public String getName() {

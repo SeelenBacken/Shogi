@@ -8,118 +8,21 @@ body{
     background-color:#ffefd5;
     display: flex;
 	flex-direction: column;
-	
 }
 
-.form__group {
-  position: relative;
-  padding: 100px 0 0;
-  margin-top: 20px;
-  width: 50%;
-}
-
-.form__field {
-  font-family: inherit;
-  width: 100%;
-  border: 0;
-  border-bottom: 2px solid #9b9b9b;
-  outline: 0;
-  font-size: 1.3rem;
-  color: black;
-  padding: 7px 0;
-  background: transparent;
-  transition: border-color 0.3s;
-
-  &::placeholder {
-    color: transparent;
-  }
-}
-
-.form__field:focus {
-  ~ .form__label {
-    position: absolute;
-    top: 0;
-    display: block;
-    transition: 0.2s;
-    font-size: 1rem;
-    color: #ffefd5;
-    font-weight:700;    
-  }
-  padding-bottom: 6px;  
-  font-weight: 700;
-  border-width: 3px;
-  border-image: linear-gradient(to right, #86592d, #1a0d00);
-  border-image-slice: 1;
-}
-
-.form__field{
-  &:required,&:invalid { box-shadow:none; }
-}
-
-.settingBt{
-	/*Center wäre gut*/
-}
-
-/*header*/
-
-#title{
-    position: fixed;
-    top: 0;
-    margin-left: -8px;
-    width:100%;
-    height: 150px;
-    background-color:#d2b48c;
-    text-align: center;
-    vertical-align: center;
-    font-style: italic;
-    font-size: 40px;
-    padding-bottom: 20px;
-}
-
-/*footer*/
-footer {
-    position: fixed;
-    background-color: #d2b48c;
-    bottom: 0;
-    width: 100%;
-    margin-left: -8px;
-    margin-right: -100px;
-}
-.footer-buttons {
-    color: BLACK;
-    text-align: center;
-    padding: 12px;
-    text-decoration: none;
-    font-size: 18px;
-    line-height: 25px;
-    border-radius: 4px;
-}
-.footer-buttons:hover {
-    background-color: #cd9546 ; /* #d4a364*/
-    color: black;
-}
-@media screen and (max-width: 500px) {
-    .footer-buttons {
-        float: none;
-        display: block;
-        text-align: left;
-    }
-    .footer-buttons {
-        float: none;
-    }
-}
-
-/*button start page*/
+/*Content Style*/
 #content{
     position: absolute;
     top: 50%;
     left: 50%;
     width: 30em;
     height: 18em;
-    margin-top: -9em;
+    margin-top: -13em;
     margin-left: -15em;
+    padding-bottom: 40px;
 }
 
+/*Button Style*/
 .button {
     color: #000000 !important;
     text-transform: uppercase;
@@ -143,80 +46,57 @@ footer {
     transition: all 0.4s ease 0s;
 }
 
-/*game page*/
-body {
-    user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-drag: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+/*Setting Button*/
+.settingBt{
+
 }
-table.playfield {
-    border-collapse: collapse;
-    color: gray;
-    padding: 10%;
-    float: left;
-    -ms-user-select: None;
-    -moz-user-select: None;
-    -webkit-user-select: None;
-    user-select: None;
-}
-table.playfield td {
-    width: 50px;
-    height: 50px;
-    border: thick solid black;
+
+/*header*/
+#title{
+    position: absolute;
+    top: 0;
+    margin-left: -8px;
+    width:100%;
+    height: 150px;
+    background-color:#d2b48c;
     text-align: center;
-    vertical-align: middle;
-    background: 	#deb887;
+    vertical-align: center;
+    font-style: italic;
+    font-size: 40px;
+    padding-bottom: 20px;
+    margin-top: -38px;
 }
-table.playfield td.over {
-    background-color: black !important;
-}
-table.playfield tr:nth-child(odd) td:nth-child(odd){
-    background: #deb887;
-}
-table.playfield tr:nth-child(even) td:nth-child(even){
-    background: #deb887;
-}
-.playContainer {
-    padding: 10%;
-    min-height: 900px;
-}
-.graveyard {
-    border: thin solid gray;
-    height: 450px;
-    width: 200px;
-    float: left;
-    margin-left: 20px;
-}
-.player1 {
-    height: 50%;
+
+/*footer*/
+footer {
+    position: fixed;
+    background-color: #d2b48c;
+    bottom: 0;
     width: 100%;
-    border: thin solid gray;
+    margin-left: -8px;
+    margin-right: -100px;
+    height: 25px;
 }
-.player2 {
-    height: 50%;
-    width: 100%;
-    border: thin solid gray;
+.footer-buttons {
+    color: BLACK;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
 }
-.piece {
-    height: 40px;
-    width: 40px;
+.footer-buttons:hover {
+    background-color: #cd9546 ; /* #d4a364*/
     color: black;
-    align-content: center;
-    align-self: center;
-    margin: auto;
 }
-.king {
-    background-image: url("../img/king.png");
-    background-size: contain;
-}
-.knight {
-    background-image: url("../img/knight.png");
-    background-size: contain;
-}
-.horse {
-    background-image: url("../img/horse.png");
-    background-size: contain;
+@media screen and (max-width: 500px) {
+    .footer-buttons {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+    .footer-buttons {
+        float: none;
+    }
 }

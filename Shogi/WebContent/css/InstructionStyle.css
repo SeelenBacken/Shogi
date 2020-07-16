@@ -1,0 +1,33 @@
+caption
+{
+    font-weight: bold;
+}
+
+table
+{
+    display: inline-block;
+    margin-right: 50px;
+    border-collapse: collapse;
+}
+
+th,td
+{
+    border: 1px solid black;
+    height: 100px;
+    width: 100px;
+    align:center;
+}
+
+#piece
+{
+    background: #d2b48c;
+    width: 15%;
+    height: 30px;
+    padding-left: 10px;
+}
+
+#tables{
+    position: absolute;
+    bottom: -650px;
+    left: 400px;
+}

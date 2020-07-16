@@ -7,6 +7,7 @@
 	    <meta charset="UTF-8">
 	    <title>Spieler Menu</title>
 	    <link rel="stylesheet" type="text/css" href="../css/MainStyle.css">
+        <link rel="stylesheet" type="text/css" href="../css/PlayerMenuStyle.css">
 	
 	</head>
 	

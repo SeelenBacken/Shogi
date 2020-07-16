@@ -62,11 +62,10 @@
 			
 			<p>
 				Quelle: <a href="https://www.e-recht24.de">e-recht24.de</a>
+                <br><br>
 			</p>
 			
 		</div>
-		<br><br><br><br>s
-	
 	</body>
 	
 	<footer>
@@ -77,5 +76,4 @@
 		<i style="font-size:15px; padding: 2px; float: right"> ©2020 DHBW Karlsruhe All rights reserved.</i>
 	
 	</footer>
-	
 </html>

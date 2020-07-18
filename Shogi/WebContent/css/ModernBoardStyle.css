@@ -89,15 +89,15 @@ table.playfield tr:nth-child(even) td:nth-child(even){
 .gLevel {
     margin-top: 1em;
 }
-.king {background-image: url("../modern/res/half/king.png");}
-.rook {background-image: url("../modern/res/half/rook.png");}
-.bishop{background-image: url("../modern/res/half/bishop.png")}
-.silver{background-image: url("../modern/res/half/silver.png")}
-.gold{background-image: url("../modern/res/half/gold.png")}
-.lance{background-image: url("../modern/res/half/lance.png")}
-.pawn{background-image: url("../modern/res/half/pawn.png")}
-.knight {background-image: url("../modern/res/half/knight.png");}
-.horse {background-image: url("../modern/res/half/horse.png");}
+.king {background-image: url("../res/modern/half/king.png");}
+.rook {background-image: url("../res/modern/half/rook.png");}
+.bishop{background-image: url("../res/modern/half/bishop.png")}
+.silver{background-image: url("../res/modern/half/silver.png")}
+.gold{background-image: url("../res/modern/half/gold.png")}
+.lance{background-image: url("../res/modern/half/lance.png")}
+.pawn{background-image: url("../res/modern/half/pawn.png")}
+.knight {background-image: url("../res/modern/half/knight.png");}
+.horse {background-image: url("../res/modern/half/horse.png");}
 .p2Piece {
     transform: rotate(180deg);
 }

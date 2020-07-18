@@ -11,11 +11,14 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css">
 <link rel="stylesheet" type="text/css" href="../css/MainStyle.css">
-<link rel="stylesheet" type="text/css" href="<%= request.getParameter("param1") %>">
+<link rel="stylesheet" type="text/css" href="../css/TraditionalBoardStyle.css" id = "styleBoard" >
 
 </head>
 
 <body>
+
+<button onclick = "changeStyle()">Wechsel</button>
+
 
 	<section class="section">
 
@@ -233,6 +236,16 @@
 	</section>
 
 	<script>
+	function changeStyle(){
+		var aktuellerStyle = document.getElementById("styleBoard");
+		if(aktuellerStyle.getAttribute("href") === "../css/TraditionalBoardStyle.css"){
+			return aktuellerStyle.setAttribute("href", "../css/ModernBoardStyle.css");  
+		}
+		if(aktuellerStyle.getAttribute("href") === "../css/ModernBoardStyle.css"){
+			return aktuellerStyle.setAttribute("href", "../css/TraditionalBoardStyle.css");  
+		}
+	}
+	
 	    let fields = document.querySelectorAll('.playfield tr td')
 	    let pieceCounter = {
 	        king: 3,

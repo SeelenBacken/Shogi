@@ -5,14 +5,12 @@
 <head>
 	<meta charset="ISO-8859-1">
 	<title>Einstellungen</title>
-	<link rel="stylesheet" type="text/css" href="../css/MainStyle.css">
+	<link id = "style" rel="stylesheet" type="text/css" href="../css/MainStyle.css">
 </head>
 
 <body>
 
-<script>
-
-</script>
+<script type="text/javascript" src="StylesheetChange.js"></script>
 
 <header>
 	<div id = "title">
@@ -26,10 +24,9 @@
    
     
 <div id = "content">
-	 <br><br><br><br><br><br>
 	Welche Spielsteine bevorzugen Sie?
 	<form>
-		<button>Traditionell</button>
+		<button onclick = "changeStyle()">Wechsel</button>
 	</form>
     
 </div>
@@ -42,6 +39,19 @@
 	<i style="font-size:15px; padding: 2px; float: right"> ©2020 DHBW Karlsruhe All rights reserved.</i>
 </footer>
 
+<link rel="stylesheet" type="text/css" href="../css/TraditionalBoardStyle.css" id = "styleBoard" >
+<button onclick = "changeStyle()">Wechsel</button>
+<script>
+	function changeStyle(){
+		var aktuellerStyle = document.getElementById("styleBoard");
+		if(aktuellerStyle.getAttribute("href") === "../css/TraditionalBoardStyle.css"){
+			return aktuellerStyle.setAttribute("href", "../css/ModernBoardStyle.css");  
+		}
+		if(aktuellerStyle.getAttribute("href") === "../css/ModernBoardStyle.css"){
+			return aktuellerStyle.setAttribute("href", "../css/TraditionalBoardStyle.css");  
+		}
+	}
+</script>
 
 </body>
 </html>

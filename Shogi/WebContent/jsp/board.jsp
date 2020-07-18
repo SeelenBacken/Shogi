@@ -11,8 +11,7 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css">
 <link rel="stylesheet" type="text/css" href="../css/MainStyle.css">
-<link rel="stylesheet" type="text/css" href="../css/BoardStyle.css">
-<!---<link rel="stylesheet" id="pagestyle" href="<%= request.getParameter("param1") %>">--->
+<link rel="stylesheet" type="text/css" href="<%= request.getParameter("param1") %>">
 
 </head>
 

@@ -1,0 +1,112 @@
+/*game page*/
+
+body {
+    user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+table.playfield {
+    border-collapse: collapse;
+    color: gray;
+    padding: 10%;
+    float: left;
+    -ms-user-select: None;
+    -moz-user-select: None;
+    -webkit-user-select: None;
+    user-select: None;
+}
+table.playfield td {
+    width: 50px;
+    height: 50px;
+    border: thick solid black;
+    text-align: center;
+    vertical-align: middle;
+    background: 	#deb887;
+}
+table.playfield td.over {
+    background-color: black !important;
+}
+table.playfield tr:nth-child(odd) td:nth-child(odd){
+    background: #deb887;
+}
+table.playfield tr:nth-child(even) td:nth-child(even){
+    background: #deb887;
+}
+.playContainer {
+    padding: 10%;
+    min-height: 900px;
+}
+.graveyard {
+    border: thin solid gray;
+    height: 450px;
+    width: 200px;
+    float: left;
+    margin-left: 20px;
+}
+.player1 {
+    height: 50%;
+    width: 100%;
+    border: thin solid gray;
+}
+.player2 {
+    height: 50%;
+    width: 100%;
+    border: thin solid gray;
+}
+.piece {
+    height: 40px;
+    width: 40px;
+    color: black;
+    align-content: center;
+    align-self: center;
+    margin: auto;
+    background-size: contain;
+}
+#gravep1 .gravepiece {
+    height: 40px;
+    width: 40px;
+    color: black;
+    align-content: center;
+    align-self: center;
+    margin: auto;
+    background-size: contain;
+    float: left;
+}
+#gravep2 .gravepiece {
+    height: 40px;
+    width: 40px;
+    color: black;
+    align-content: center;
+    align-self: center;
+    margin: auto;
+    background-size: contain;
+    float: left;
+    transform: rotate(180deg);
+}
+.gLevel {
+    margin-top: 1em;
+}
+.king {background-image: url("../modern/res/half/king.png");}
+.rook {background-image: url("../modern/res/half/rook.png");}
+.bishop{background-image: url("../modern/res/half/bishop.png")}
+.silver{background-image: url("../modern/res/half/silver.png")}
+.gold{background-image: url("../modern/res/half/gold.png")}
+.lance{background-image: url("../modern/res/half/lance.png")}
+.pawn{background-image: url("../modern/res/half/pawn.png")}
+.knight {background-image: url("../modern/res/half/knight.png");}
+.horse {background-image: url("../modern/res/half/horse.png");}
+.p2Piece {
+    transform: rotate(180deg);
+}
+.pHighlight {
+    animation-name: backgroundHighlight;
+    animation-duration: 600ms;
+    background-color: gray !important;
+}
+@keyframes backgroundHighlight {
+    from {background-color: #deb887}
+    to {background-color: gray}
+}

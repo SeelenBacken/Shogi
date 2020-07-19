@@ -17,7 +17,7 @@
 
 <body>
 
-<button onclick = "changeStyle()">Wechsel</button>
+<input type="submit" onclick = "changeStyle()" value="Spielsteine wechseln" class="button" />
 
 
 	<section class="section">

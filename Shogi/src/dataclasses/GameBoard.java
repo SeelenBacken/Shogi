@@ -86,7 +86,7 @@ public class GameBoard {
 	 *         are no possible turns for this position this list will be empty.
 	 * 
 	 * @throws InvalidParameterException if there is no valid figure at the given
-	 *                                   position
+	 *                                   position.
 	 * 
 	 * @see #calculatePossibleTurnsFor(Vector2)
 	 */
@@ -107,21 +107,6 @@ public class GameBoard {
 	 */
 	public void clearPossibleTurns() {
 		possibleTurns.clear();
-	}
-	
-	public void moveOnBoard(Vector2 hitter, Vector2 target) {
-		if(this.getBoard()[target.getX()][target.getY()] == null) {
-			this.getBoard()[target.getX()][target.getY()] = this.getBoard()[hitter.getX()][hitter.getY()];
-		} else {
-			if(!this.getBoard()[target.getX()][target.getY()].getTeam().equals(this.getBoard()[hitter.getX()][hitter.getY()].getTeam())) {
-				if(this.getBoard()[hitter.getX()][hitter.getY()].getTeam().equals(TeamType.BLACK)) {
-					this.getBlackPrison().add(this.getBoard()[target.getX()][target.getY()]);
-				} else {
-					this.getWhitePrison().add(this.getBoard()[target.getX()][target.getY()]);
-				}
-				this.getBoard()[target.getX()][target.getY()] = this.getBoard()[hitter.getX()][hitter.getY()];
-			}
-		}
 	}
 
 	/**
@@ -156,7 +141,7 @@ public class GameBoard {
 	 * @param checkMap if not {@code null}, all paths that will result in a check
 	 *                 will be added to this
 	 * 
-	 * @return true if check otherwise false
+	 * @return {@code true} if check,{@code false} otherwise
 	 * 
 	 * @throws InvalidParameterException if team is {@link TeamType#NONE}
 	 * 
@@ -189,7 +174,7 @@ public class GameBoard {
 	 * 
 	 * @param team of the king that could be check mate
 	 * 
-	 * @return true if check mate otherwise false
+	 * @return {@code true} if check mate,{@code false} otherwise
 	 * 
 	 * @throws InvalidParameterException if team is {@link TeamType#NONE}
 	 * 
@@ -207,6 +192,69 @@ public class GameBoard {
 			return false;
 		}
 		return kingCanBeSafed(kingPos, checkMap);
+	}
+
+	/**
+	 * Tests if the insertion of the specific figure at the given position would
+	 * cause a check.
+	 * 
+	 * @param insertPos position at which the figure will be inserted. @param figure
+	 *                  that will be inserted.
+	 * 
+	 * @return {@code true} if the insertion would cause a check {@code false}
+	 *         otherwise.
+	 * 
+	 * @throws InvalidParameterException if either the {@code insertPos} or
+	 *                                   {@code figure} is {@code null} or if the
+	 *                                   team of the figure is
+	 *                                   {@link TeamType#NONE}.
+	 */
+	public boolean causesCheck(Vector2 insertPos, Figure figure) {
+		if (insertPos == null) {
+			throw new InvalidParameterException("The insert position cannot be null!");
+		}
+		if (figure == null) {
+			throw new InvalidParameterException("The inserted figure cannot be null!");
+		}
+		if (figure.getTeam() == TeamType.NONE) {
+			throw new InvalidParameterException("The figure must be part of a team!");
+		}
+		Vector2 kingPos = figure.getTeam() == TeamType.WHITE ? blackKingPos : whiteKingPos;
+		return figure.canMoveThere(insertPos, kingPos, this);
+	}
+
+	/**
+	 * Moves a figure defined by the {@code hitter} parameter towards the target
+	 * position if the target position is not occupied by a team member of the
+	 * moving figure.
+	 * 
+	 * @param hitter a position where the figure that moves on the board towards the
+	 *               target
+	 * @param target the position where the figure should move at.
+	 * 
+	 * @throws InvalidParameterException if there is no hitter at the given
+	 *                                   position.
+	 */
+	public void moveOnBoard(Vector2 hitter, Vector2 target) {
+		if (ensureFigureTypeForPosition(hitter) == FigureType.UNDEFINED) {
+			throw new InvalidParameterException("No hitter at given position: " + hitter);
+		}
+		if (ensureTeamTypeForPosition(target) != TeamType.NONE) {
+			if (board[target.getX()][target.getY()].getTeam() == board[hitter.getX()][hitter.getY()].getTeam()) {
+				return;
+			}
+			switch (ensureTeamTypeForPosition(target)) {
+			case BLACK:
+				blackPrison.add(board[target.getX()][target.getY()]);
+				break;
+			case WHITE:
+				whitePrison.add(board[target.getX()][target.getY()]);
+			default:
+				break;
+			}
+		}
+		board[target.getX()][target.getY()] = board[hitter.getX()][hitter.getY()];
+		board[hitter.getX()][hitter.getY()] = null;
 	}
 
 	/**
@@ -309,7 +357,7 @@ public class GameBoard {
 	 * @see #calculateTurnsUsingPositions(TreeSet, Vector2, Vector2...)
 	 */
 	private ArrayList<Vector2> calculatePossibleTurnsFor(Vector2 pos) {
-		TreeSet<Vector2> possibleTurns = new TreeSet<Vector2>();
+		TreeSet<Vector2> possibleTurns = new TreeSet<Vector2>(new Vector2Comparator());
 		switch (ensureFigureTypeForPosition(pos)) {
 		case KING:
 			calculateKingTurns(possibleTurns, pos);

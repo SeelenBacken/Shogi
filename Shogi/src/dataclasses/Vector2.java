@@ -5,6 +5,10 @@ package dataclasses;
  * methods, also includes some constants.
  * 
  * @see #X
+ * @see #Y
+ * @see #ZERO
+ * @see #ONE
+ * @see #NEG_ONE
  */
 public class Vector2 {
 
@@ -94,19 +98,6 @@ public class Vector2 {
 	}
 
 	/**
-	 * Considers this instance equal to any other instance of this class where the
-	 * x-values and the y-values are equal.
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Vector2) {
-			Vector2 temp = (Vector2) obj;
-			return x == temp.x && y == temp.y;
-		}
-		return false;
-	}
-
-	/**
 	 * Instantiates a new vector based on this instance with the x-value negated.
 	 * 
 	 * @return a new instance having the x-values inverted.
@@ -134,7 +125,17 @@ public class Vector2 {
 	}
 
 	/**
+	 * Calculates the length of the vector.
 	 * 
+	 * @return the length
+	 */
+	public double length() {
+		return Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+	}
+
+	/**
+	 * Shortens the vector if {@link #isDiagonal()} or {@link #isAxisVector()}
+	 * {@code returns true}.
 	 */
 	public void shortenIfPossible() {
 		if (isDiagonal()) {
@@ -147,18 +148,36 @@ public class Vector2 {
 		}
 	}
 
+	/**
+	 * Copies a vector and tries to shorten it.
+	 * 
+	 * @return the copy of the vector that may be shortened.
+	 * 
+	 * @see #shortenIfPossible()
+	 */
 	public Vector2 getNewShortenedVectorIfPossible() {
 		Vector2 copy = new Vector2(this);
 		copy.shortenIfPossible();
 		return copy;
 	}
 
+	/**
+	 * 
+	 * 
+	 * @return {@link #equals(Object)} for this instance and {@link #ZERO}.
+	 */
 	public boolean isZero() {
 		return this.equals(ZERO);
 	}
 
+	/**
+	 * Evaluates if {@link #isZero()} {@code returns false} and the absolutes of the
+	 * coordinates are equal.
+	 * 
+	 * @return {@code true} if and only if the vector is diagonal.
+	 */
 	public boolean isDiagonal() {
-		return !this.equals(ZERO) && Math.abs(x) == Math.abs(y);
+		return !isZero() && Math.abs(x) == Math.abs(y);
 	}
 
 	/**
@@ -193,10 +212,44 @@ public class Vector2 {
 		return isXVector() || isYVector();
 	}
 
+	@Override
+	public String toString() {
+		return "(" + x + ", " + y + ")";
+	}
+
+	/**
+	 * Considers this instance equal to any other instance of this class where the
+	 * x-values and the y-values are equal.
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Vector2) {
+			Vector2 temp = (Vector2) obj;
+			return x == temp.x && y == temp.y;
+		}
+		return false;
+	}
+
+	/**
+	 * Adds 2 vectors together.
+	 * 
+	 * @param v0 first vector
+	 * @param v1 second vector
+	 * 
+	 * @return the result as a new instance.
+	 */
 	public static Vector2 add(Vector2 v0, Vector2 v1) {
 		return new Vector2(v0.x + v1.x, v0.y + v1.y);
 	}
 
+	/**
+	 * Subtracts the second from the first vector.
+	 * 
+	 * @param v0 first vector
+	 * @param v1 second vector
+	 * 
+	 * @return the result as a new instance.
+	 */
 	public static Vector2 sub(Vector2 v0, Vector2 v1) {
 		return new Vector2(v0.x - v1.x, v0.y - v1.y);
 	}

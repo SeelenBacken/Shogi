@@ -1,5 +1,6 @@
 package beans;
 
+import dataclasses.AI;
 import dataclasses.GameBoard;
 import dataclasses.History;
 import dataclasses.Player;
@@ -56,17 +57,6 @@ public class GameBean {
 	public Player getBlack() {
 		return black;
 	}
-  
-	public int getPlayerTeam(int x, int y) {
-		if(this.getBoard().getBoard()[x][y] != null) {
-			Player p = (this.getBlack().getName().equals("AI")) ? this.getWhite() : this.getBlack();
-			
-			int res = (this.getBoard().getBoard()[x][y].getTeam().equals(p.getTeam())) ? 1 : 2;
-			return res;
-		} 
-		return 1;
-		
-	}
 
 	/**
 	 * Getter of the game board.
@@ -76,8 +66,30 @@ public class GameBean {
 	public GameBoard getBoard() {
 		return board;
 	}
-	
-	
+
+	/**
+	 * Evaluates an integer value based on the player that is an {@link AI},
+	 * referring to a figure at a position on the {@link GameBoard} represented by
+	 * the parameters.
+	 * 
+	 * @param x value of the figure on the board.
+	 * @param y value of the figure on the board.
+	 * 
+	 * @return {@code 1} if the figure at the coordinate is {@code null} or the
+	 *         player that occupies the figure is a human player, 2 if the the
+	 *         player is an {@link AI}
+	 */
+	public int getPlayerTeam(int x, int y) {
+		if (this.getBoard().getBoard()[x][y] != null) {
+			if (white instanceof AI) {
+				return board.getBoard()[x][y].getTeam() == TeamType.WHITE ? 2 : 1;
+			} else if (black instanceof AI) {
+				return board.getBoard()[x][y].getTeam() == TeamType.BLACK ? 2 : 1;
+			}
+		}
+		return 1;
+	}
+
 	/**
 	 * Setter of the round. Should only used with 1 or -1.
 	 * 

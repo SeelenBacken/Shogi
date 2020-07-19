@@ -231,7 +231,7 @@ public class Controller extends HttpServlet {
 						if(g.getBoard().getBoard()[target.getX()][target.getY()].getType().equals(FigureType.UNDEFINED)) {
 		        			
 							//Prooves if the move would directly check the Com-Player
-							if(!g.getBoard().figureWouldCheckEnemy(target, f)) {
+							if(!g.getBoard().causesCheck(target, f)) {
 								
 								//Place the figure on the target.
 								g.getBoard().getBoard()[target.getX()][target.getY()] = f;

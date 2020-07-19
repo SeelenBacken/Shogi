@@ -10,7 +10,7 @@
 	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.css">
 		<link rel="stylesheet" type="text/css" href="../css/MainStyle.css">
 		<link rel="stylesheet" type="text/css" href="../css/BoardStyle.css">
-		<!---<link rel="stylesheet" id="pagestyle" href="<%= request.getParameter("param1") %>">--->
+		<link rel="stylesheet" type="text/css" href="../css/TraditionalPieceStyle.css" id="styleBoard">
 	
 	</head>
 	
@@ -177,6 +177,9 @@
 		        </div>
 		    </div>
 		    
+		    <br>
+		    <input type="submit" onclick = "changeStyle()" value="Spielsteine wechseln" class="button" />
+		    
 		</section>
 		
 		<script>
@@ -194,6 +197,16 @@
 		        rook: 3,
 		        pawn: 3,
 		    }
+		    
+		    function changeStyle(){
+				var aktuellerStyle = document.getElementById("styleBoard");
+				if(aktuellerStyle.getAttribute("href") === "../css/TraditionalPieceStyle.css"){
+					return aktuellerStyle.setAttribute("href", "../css/ModernPieceStyle.css");  
+				}
+				if(aktuellerStyle.getAttribute("href") === "../css/ModernPieceStyle.css"){
+					return aktuellerStyle.setAttribute("href", "../css/TraditionalPieceStyle.css");  
+				}
+			}
 		    
 		    function allowDrop(ev) {
 		        ev.preventDefault();

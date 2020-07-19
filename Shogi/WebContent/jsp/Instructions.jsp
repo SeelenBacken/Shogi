@@ -8,7 +8,7 @@
 		<meta charset="UTF-8">
 		<title>Instructions</title>
 		<link rel = "stylesheet" type = "text/css" href = "../css/MainStyle.css">
-    <link rel = "stylesheet" type = "text/css" href = "../css/InstructionStyle.css">
+    	<link rel = "stylesheet" type = "text/css" href = "../css/InstructionStyle.css">
 	</head>
 	
 	<body>
@@ -79,7 +79,7 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td><img src="res/full/pawn.png"/></td>
+					<td><img src="../res/full/pawn.png"/></td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -118,7 +118,7 @@
 				<tr>
 					<td></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/tokin.png"/></td>
+					<td><img src="../res/full/tokin.png"/></td>
 					<td style="background-color:white;"></td>
 					<td></td>
 				</tr>
@@ -157,7 +157,7 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td><img src="res/full/silver.png"/></td>
+					<td><img src="../res/full/silver.png"/></td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -196,7 +196,7 @@
 				<tr>
 					<td></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/prosilver.png"/></td>
+					<td><img src="../res/full/prosilver.png"/></td>
 					<td style="background-color:white;"></td>
 					<td></td>
 				</tr>
@@ -235,7 +235,7 @@
 				<tr>
 					<td></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/gold.png"/></td>
+					<td><img src="../res/full/gold.png"/></td>
 					<td style="background-color:white;"></td>
 					<td></td>
 				</tr>
@@ -275,7 +275,7 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td><img src="res/full/lance.png"/></td>
+					<td><img src="../res/full/lance.png"/></td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -314,7 +314,7 @@
 				<tr>
 					<td></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/prolance.png"/></td>
+					<td><img src="../res/full/prolance.png"/></td>
 					<td style="background-color:white;"></td>
 					<td></td>
 				</tr>
@@ -353,7 +353,7 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td><img src="res/full/bishop.png"/></td>
+					<td><img src="../res/full/bishop.png"/></td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -392,7 +392,7 @@
 				<tr>
 					<td></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/horse.png"/></td>
+					<td><img src="../res/full/horse.png"/></td>
 					<td style="background-color:white;"></td>
 					<td></td>
 				</tr>
@@ -431,7 +431,7 @@
 				<tr>
 					<td style="background-color:white;"></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/rook.png"/></td>
+					<td><img src="../res/full/rook.png"/></td>
 					<td style="background-color:white;"></td>
 					<td style="background-color:white;"></td>
 				</tr>
@@ -470,7 +470,7 @@
 				<tr>
 					<td style="background-color:white;"></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/dragon.png"/></td>
+					<td><img src="../res/full/dragon.png"/></td>
 					<td style="background-color:white;"></td>
 					<td style="background-color:white;"></td>
 				</tr>
@@ -509,7 +509,7 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td><img src="res/full/knight.png"/></td>
+					<td><img src="../res/full/knight.png"/></td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -548,7 +548,7 @@
 				<tr>
 					<td></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/proknight.png"/></td>
+					<td><img src="../res/full/proknight.png"/></td>
 					<td style="background-color:white;"></td>
 					<td></td>
 				</tr>
@@ -588,7 +588,7 @@
 				<tr>
 					<td></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/king.png"/></td>
+					<td><img src="../res/full/king.png"/></td>
 					<td style="background-color:white;"></td>
 					<td></td>
 				</tr>

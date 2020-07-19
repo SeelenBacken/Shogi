@@ -13,6 +13,8 @@
 	
 	<body>
 	
+		<jsp:useBean id="g" class="beans.GameBean" scope="session" />
+	
 	    <div id = "title">
 	        <h1>Geben Sie ihren Usernamen ein:</h1>
 	    </div>

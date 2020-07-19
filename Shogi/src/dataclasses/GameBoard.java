@@ -313,7 +313,7 @@ public class GameBoard {
 	 * @see #calculateTurnsUsingPositions(TreeSet, Vector2, Vector2...)
 	 */
 	private ArrayList<Vector2> calculatePossibleTurnsFor(Vector2 pos) {
-		TreeSet<Vector2> possibleTurns = new TreeSet<Vector2>();
+		TreeSet<Vector2> possibleTurns = new TreeSet<Vector2>(new Vector2Comparator());
 		switch (ensureFigureTypeForPosition(pos)) {
 		case KING:
 			calculateKingTurns(possibleTurns, pos);

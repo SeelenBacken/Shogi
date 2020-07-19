@@ -1,5 +1,7 @@
 package dataclasses;
 
+import util.Vector2Comparator;
+
 /**
  * This class represents a standard two dimensional vector with some utility
  * methods, also includes some constants.
@@ -200,4 +202,5 @@ public class Vector2 {
 	public static Vector2 sub(Vector2 v0, Vector2 v1) {
 		return new Vector2(v0.x - v1.x, v0.y - v1.y);
 	}
+
 }

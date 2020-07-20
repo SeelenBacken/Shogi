@@ -346,15 +346,24 @@ public class GameBoard {
 
 	/**
 	 * Calculates all possible turns for a figure specified by the current position.
+	 * Ensures that the turns are valid even if the current situation
+	 * {@link #isCheck(TeamType, CheckMap) is check}.
 	 * 
 	 * @param pos the position of the figure on the game board
 	 * 
 	 * @return all possible turns as an {@link ArrayList} if there are no possible
 	 *         turns the list will be empty
 	 * 
+	 * @throws InvalidParameterException if the figure at the given position is not
+	 *                                   valid, let it be either the team is
+	 *                                   {@link TeamType#NONE} or the type is
+	 *                                   {@link FigureType#UNDEFINED}, or there is
+	 *                                   no figure at all.
+	 * 
 	 * @see #calculateKingTurns(TreeSet, Vector2)
 	 * @see #calculateTurnsUsingDirections(TreeSet, Vector2, Vector2...)
 	 * @see #calculateTurnsUsingPositions(TreeSet, Vector2, Vector2...)
+	 * @see #isCheck(TeamType, CheckMap)
 	 */
 	private ArrayList<Vector2> calculatePossibleTurnsFor(Vector2 pos) {
 		TreeSet<Vector2> possibleTurns = new TreeSet<Vector2>(new Vector2Comparator());
@@ -402,6 +411,17 @@ public class GameBoard {
 		default:
 			throw new InvalidParameterException("No valid figure at the given position!");
 		}
+		CheckMap toSatisfy = new CheckMap();
+		TeamType team = ensureTeamTypeForPosition(pos);
+		if (isCheck(team, toSatisfy) && ensureFigureTypeForPosition(pos) != FigureType.KING) {
+			if (toSatisfy.hasCrucialPosition()) {
+				possibleTurns.removeIf((turn) -> !turn.equals(toSatisfy.getFirstCrucialPosition()));
+			} else if (toSatisfy.getPathCount() > 1) {
+				possibleTurns.clear();
+			} else if (toSatisfy.getPathCount() == 1) {
+				possibleTurns.removeIf((turn) -> !toSatisfy.getFirstPath().contains(turn));
+			}
+		}
 		return new ArrayList<Vector2>(possibleTurns);
 	}
 
@@ -437,16 +457,11 @@ public class GameBoard {
 		TeamType team = ensureTeamTypeForPosition(pos);
 		ArrayList<Vector2> enemyTeam = FigureSelector.selectAliveEnemyTeam(board, team);
 		for (Vector2 ePos : enemyTeam) {
-			if (ePos.equals((team == TeamType.WHITE) ? blackKingPos : whiteKingPos)) {
-				// remove if enemy king can move there
-				turns.removeIf((v) -> board[ePos.getX()][ePos.getY()].isValidMove(v));
-			} else {
-				// remove if other enemy can move there
-				turns.removeIf((turn) -> board[ePos.getX()][ePos.getY()].canMoveThere(ePos, turn, this));
-			}
+			// remove if other enemy can move there
+			turns.removeIf((turn) -> board[ePos.getX()][ePos.getY()].canMoveThere(ePos, turn, this));
 		}
 		// remove if figure of the same team is at the position
-		turns.removeIf((v) -> team == ensureTeamTypeForPosition(v));
+		turns.removeIf((v) -> isOutOfBounds(v) || team == ensureTeamTypeForPosition(v));
 	}
 
 	/**

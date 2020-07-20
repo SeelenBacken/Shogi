@@ -18,7 +18,7 @@ public enum FigureType {
 	KING,
 
 	/**
-	 * Represents a tower.
+	 * Represents a rook.
 	 */
 	TOWER,
 

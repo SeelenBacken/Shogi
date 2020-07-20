@@ -70,8 +70,10 @@ public class Player {
 	 * @param board that contains the figure.
 	 * 
 	 * @return a position on the board representing the valid move.
+	 * 
+	 * @see AI#getTurn(GameBoard)
 	 */
-	public Vector2 getTurn(Vector2 figur, GameBoard board) {
-		return figur;
+	public Vector2 getTurn(GameBoard board) {
+		return null;
 	}
 }

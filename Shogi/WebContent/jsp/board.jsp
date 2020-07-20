@@ -34,29 +34,29 @@
 		        	<tr>
 		        		<td>
 		        			<label for="Xc">X-Ordinate</label>	
-			        		<input name="Xc" type="text" />
+			        		<input name="Xc" value="Z" type="text" maxlength="1" pattern="[A-I, Z]" />
 		        		</td>
 		        		<td>
 		        			<label for="Xh">X-Ordinate</label>
-		       				<input name="Xh" type="text" required="required">
+		       				<input id="xstart" name="Xh" type="text" required="required" maxlength="1" pattern="[A-I, Z]" >
 		        		</td>
 		        		<td>
 		        			<label for="Xt">X-Ordinate</label>
-		        			<input name="Xt" type="text" required="required">
+		        			<input name="Xt" type="text" required="required" maxlength="1" pattern="[A-I]" >
 		        		</td>
 		        	</tr>
 		        	<tr>
 		        		<td>
 		        			<label for="Yc">Y-Ordinate</label>
-							<input name="Yc" type="text" />
+							<input name="Yc" value="-1" type="text" maxlength="2" pattern="-?[0-8]{1}" />
 		        		</td>
 		        		<td>
 		        			<label for="Yh">Y-Ordinate</label>
-							<input name="Yh" type="text" required="required">
+							<input id="ystart" name="Yh" type="text" required="required" maxlength="2" pattern="-?[0-8]{1}" >
 		        		</td>
 		        		<td>
 		        			<label for="Yt">Y-Ordinate</label>
-							<input name="Yt" type="text" required="required"><br>
+							<input name="Yt" type="text" required="required" maxlength="2" pattern="-?[0-8]{1}" ><br>
 		        		</td>
 		        	</tr>
 		        	<tr>
@@ -87,7 +87,7 @@
 		                			
 		                			<c:if test = "${g.getBoard().getBoard()[j][8 - i] != null}">
 			                			
-			                			<div class="piece p${g.getPlayerTeam(j,8 - i)}Piece ${g.getBoard().getBoard()[j][8 - i].getType()}" onclick="upgrade(event, this.parentNode)" ondragstart="drag(event)" draggable="true"></div>
+			                			<div class="piece p${g.getPlayerTeam(j,8 - i)}Piece ${g.getBoard().getBoard()[j][8 - i].getType()}" ></div>
 		                			
 		                			</c:if>
 		                		
@@ -183,8 +183,6 @@
 		</section>
 		
 		<script>
-			var xc = "Z";
-			var yc = -1;
 			
 		    let fields = document.querySelectorAll('.playfield tr td')
 		    let pieceCounter = {
@@ -213,7 +211,32 @@
 		    }
 		    
 		    function drag(ev) {
+		    	
+		    	var xs = "Z";
+		    	var ys;
+		    	var id = ev.target.id;
+		    	
+		    	if(id == "bishop1"){
+		    		ys = -1;
+		    	} else if(id == "rook1"){
+		    		ys = -2;
+		    	} else if(id == "gold1"){
+		    		ys = -3;
+		    	} else if(id == "silver1"){
+		    		ys = -4;
+		    	} else if(id == "knight1"){
+		    		ys = -5;
+		    	} else if(id == "pawn1"){
+		    		ys = -6;
+		    	} else if(id == "lance1"){
+		    		ys = -7;
+		    	} 
+		    	
+		    	document.getElementById("xstart").innerHTML = xs;
+		    	document.getElementById("ystart").innerHTML = ys;
+		    	
 		        ev.dataTransfer.setData("text", ev.target.id);
+		        
 		        fields.forEach(function (field) {
 		        	console.log(field.innerHTML);
 		        	if(field.innerHTML == "") {
@@ -235,13 +258,7 @@
 		        fields.forEach(function (field) {
 		        	field.classList.remove('pHighlight');
 		        })
-		        
-		        let xh = hitter.parentElement.Id.charAt(0);
-		        let yh = hitter.parentElement.Id.charAt(1);
-		        let xt = target.parentElement.Id.charAt(0);
-		        let yt = target.parentElement.Id.charAt(1);
-	
-		        location.assign("http://localhost:8080/Shogi/Controller?Xh=" + xh + "&Yh=" + yh + "&Xt=" + xt + "&Yt=" + yt + "&Xc=" + xc + "&Yc=" + yc);
+		       
 		    }
 		    
 		    function checkTarget(target, hitter) {
@@ -268,14 +285,6 @@
 		        }else{
 		        	ev.target.appendChild(hitter);
 		        }
-		    }
-		    
-		    function upgrade(event, parent){
-		    	if(xc == "Z" && yc == -1){
-					let id = parent.id;
-			    	xc = id.charAt(0);
-			    	yc = id.charAt(1);
-				}
 		    }
 		    
 		    function newKing(playerNr) {

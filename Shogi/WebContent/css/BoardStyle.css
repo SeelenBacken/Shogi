@@ -1,5 +1,3 @@
-/*game page*/
-
 body {
     user-drag: none;
     user-select: none;
@@ -8,6 +6,7 @@ body {
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+
 table.playfield {
     border-collapse: collapse;
     color: gray;
@@ -18,6 +17,7 @@ table.playfield {
     -webkit-user-select: None;
     user-select: None;
 }
+
 table.playfield td {
     width: 50px;
     height: 50px;
@@ -26,19 +26,24 @@ table.playfield td {
     vertical-align: middle;
     background: 	#deb887;
 }
+
 table.playfield td.over {
     background-color: black !important;
 }
+
 table.playfield tr:nth-child(odd) td:nth-child(odd){
     background: #deb887;
 }
+
 table.playfield tr:nth-child(even) td:nth-child(even){
     background: #deb887;
 }
+
 .playContainer {
     padding: 10%;
     min-height: 900px;
 }
+
 .graveyard {
     border: thin solid gray;
     height: 450px;
@@ -46,16 +51,19 @@ table.playfield tr:nth-child(even) td:nth-child(even){
     float: left;
     margin-left: 20px;
 }
+
 .player1 {
     height: 50%;
     width: 100%;
     border: thin solid gray;
 }
+
 .player2 {
     height: 50%;
     width: 100%;
     border: thin solid gray;
 }
+
 .piece {
     height: 40px;
     width: 40px;
@@ -65,6 +73,7 @@ table.playfield tr:nth-child(even) td:nth-child(even){
     margin: auto;
     background-size: contain;
 }
+
 #gravep1 .gravepiece {
     height: 40px;
     width: 40px;
@@ -75,6 +84,7 @@ table.playfield tr:nth-child(even) td:nth-child(even){
     background-size: contain;
     float: left;
 }
+
 #gravep2 .gravepiece {
     height: 40px;
     width: 40px;
@@ -86,26 +96,21 @@ table.playfield tr:nth-child(even) td:nth-child(even){
     float: left;
     transform: rotate(180deg);
 }
+
 .gLevel {
     margin-top: 1em;
 }
-.king {background-image: url("../res/half/king.png");}
-.rook {background-image: url("../res/half/rook.png");}
-.bishop{background-image: url("../res/half/bishop.png")}
-.silver{background-image: url("../res/half/silver.png")}
-.gold{background-image: url("../res/half/gold.png")}
-.lance{background-image: url("../res/half/lance.png")}
-.pawn{background-image: url("../res/half/pawn.png")}
-.knight {background-image: url("../res/half/knight.png");}
-.horse {background-image: url("../res/half/horse.png");}
+
 .p2Piece {
     transform: rotate(180deg);
 }
+
 .pHighlight {
     animation-name: backgroundHighlight;
     animation-duration: 600ms;
     background-color: gray !important;
 }
+
 @keyframes backgroundHighlight {
     from {background-color: #deb887}
     to {background-color: gray}

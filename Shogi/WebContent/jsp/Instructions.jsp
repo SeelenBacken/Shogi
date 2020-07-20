@@ -8,7 +8,9 @@
 		<meta charset="UTF-8">
 		<title>Instructions</title>
 		<link rel = "stylesheet" type = "text/css" href = "../css/MainStyle.css">
-    <link rel = "stylesheet" type = "text/css" href = "../css/InstructionStyle.css">
+    	<link rel = "stylesheet" type = "text/css" href = "../css/InstructionStyle.css">
+    	<link rel = "stylesheet" type = "text/css" href = "../css/TraditionalPieceStyle.css" id="styleBoard">
+	
 	</head>
 	
 	<body>
@@ -45,7 +47,11 @@
 			<br><br>
 			
 			<h3>Spielfiguren</h3>
-			<select name = "piece" id = "piece" onchange="showTable()">
+			
+			<br>
+			<input type="submit" onclick = "changeStyle()" value="Ansicht wechseln" class="inputStyle" />
+			
+			<select name = "piece" id="piece" onchange="showTable()">
 				<option value = "pawn">Bauer</option>
 				<option value = "silver">Silberner General</option>
 				<option value = "gold">Goldener General</option>
@@ -60,6 +66,7 @@
 		<br><br>
 		
 		<div id = "tables">
+		
 			<table id = "tablePawn">
 				<caption>Bauer</caption>
 				<tr>
@@ -79,7 +86,7 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td><img src="res/full/pawn.png"/></td>
+					<td class="PAWN"></td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -118,7 +125,7 @@
 				<tr>
 					<td></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/tokin.png"/></td>
+					<td class="TOKIN"></td>
 					<td style="background-color:white;"></td>
 					<td></td>
 				</tr>
@@ -157,7 +164,7 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td><img src="res/full/silver.png"/></td>
+					<td class="SILVER_GENERAL"></td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -196,7 +203,7 @@
 				<tr>
 					<td></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/prosilver.png"/></td>
+					<td class="PROSILVER"></td>
 					<td style="background-color:white;"></td>
 					<td></td>
 				</tr>
@@ -235,7 +242,7 @@
 				<tr>
 					<td></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/gold.png"/></td>
+					<td class="GOLDEN_GENERAL"></td>
 					<td style="background-color:white;"></td>
 					<td></td>
 				</tr>
@@ -275,7 +282,7 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td><img src="res/full/lance.png"/></td>
+					<td class="LANCE"></td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -314,7 +321,7 @@
 				<tr>
 					<td></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/prolance.png"/></td>
+					<td class="PROLANCE"></td>
 					<td style="background-color:white;"></td>
 					<td></td>
 				</tr>
@@ -353,7 +360,7 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td><img src="res/full/bishop.png"/></td>
+					<td class="BISHOP"></td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -392,7 +399,7 @@
 				<tr>
 					<td></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/horse.png"/></td>
+					<td class="HORSE"></td>
 					<td style="background-color:white;"></td>
 					<td></td>
 				</tr>
@@ -431,7 +438,7 @@
 				<tr>
 					<td style="background-color:white;"></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/rook.png"/></td>
+					<td class="TOWER"></td>
 					<td style="background-color:white;"></td>
 					<td style="background-color:white;"></td>
 				</tr>
@@ -470,7 +477,7 @@
 				<tr>
 					<td style="background-color:white;"></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/dragon.png"/></td>
+					<td class="DRAGON"></td>
 					<td style="background-color:white;"></td>
 					<td style="background-color:white;"></td>
 				</tr>
@@ -509,7 +516,7 @@
 				<tr>
 					<td></td>
 					<td></td>
-					<td><img src="res/full/knight.png"/></td>
+					<td class="KNIGHT"></td>
 					<td></td>
 					<td></td>
 				</tr>
@@ -548,7 +555,7 @@
 				<tr>
 					<td></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/proknight.png"/></td>
+					<td class="PROKNIGHT"></td>
 					<td style="background-color:white;"></td>
 					<td></td>
 				</tr>
@@ -588,7 +595,7 @@
 				<tr>
 					<td></td>
 					<td style="background-color:white;"></td>
-					<td><img src="res/full/king.png"/></td>
+					<td class="KING"></td>
 					<td style="background-color:white;"></td>
 					<td></td>
 				</tr>
@@ -607,8 +614,10 @@
 					<td></td>
 				</tr>
 			</table>
-            <br><br><br>
+            
 		</div>
+
+		
 		
 		<footer>
 			<a href = "../jsp/Impressum.jsp" class="footer-buttons">Impressum</a>
@@ -618,6 +627,16 @@
 		
 		<script>
 			showTable();
+			
+			function changeStyle(){
+				var aktuellerStyle = document.getElementById("styleBoard");
+				if(aktuellerStyle.getAttribute("href") === "../css/TraditionalPieceStyle.css"){
+					return aktuellerStyle.setAttribute("href", "../css/ModernPieceStyle.css");  
+				}
+				if(aktuellerStyle.getAttribute("href") === "../css/ModernPieceStyle.css"){
+					return aktuellerStyle.setAttribute("href", "../css/TraditionalPieceStyle.css");  
+				}
+			}
 			
 			function showTable()
 			{

@@ -17,5 +17,9 @@
 		<servlet-name>Controller</servlet-name>
 		<url-pattern>/Controller</url-pattern>
 	</servlet-mapping>
+	
+	<session-config>
+		<session-timeout>5</session-timeout>
+	</session-config>
   
 </web-app>

@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.KING {background-image: url("../res/modern/half/king.png");}
+
+.TOWER {background-image: url("../res/modern/half/rook.png");}
+
+.BISHOP {background-image: url("../res/modern/half/bishop.png")}
+
+.SILVER_GENERAL {background-image: url("../res/modern/half/silver.png")}
+
+.GOLDEN_GENERAL {background-image: url("../res/modern/half/gold.png")}
+
+.LANCE {background-image: url("../res/modern/half/lance.png")}
+
+.PAWN {background-image: url("../res/modern/half/pawn.png")}
+
+.KNIGHT {background-image: url("../res/modern/half/knight.png");}
+
+.HORSE {background-image: url("../res/modern/half/horse.png");}
+
+.DRAGON {background-image: url("../res/modern/half/dragon.png");}
+
+.TOKIN {background-image: url("../res/modern/half/tokin.png");}
+
+.PROSILVER {background-image: url("../res/modern/half/prosilver.png");}
+
+.PROLANCE {background-image: url("../res/modern/half/prolance.png");}
+
+.PROKNIGHT {background-image: url("../res/modern/half/proknight.png");}

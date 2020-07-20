@@ -106,6 +106,9 @@ public class Controller extends HttpServlet {
 					g.getWhite().setName(request.getParameter("Username"));
 					g.setBlack(new AI(TeamType.BLACK));
 					
+					//The Black team starts. If the black team is the AI, the game starts with a random turn of the AI.
+					g.getBlack().doTurn(g.getBoard());
+					
 				} else {
 					g.getBlack().setName(request.getParameter("Username"));
 					g.setWhite(new AI(TeamType.WHITE));
@@ -170,7 +173,7 @@ public class Controller extends HttpServlet {
 							if(g.getBoard().getBoard()[target.getX()][target.getY()] == null || !g.getBoard().getBoard()[target.getX()][target.getY()].getTeam().equals(player.getTeam())) {
 								
 								//Prooves if the target is accessible for the figure on the hitter-position.
-							//	if(g.getBoard().getPossibleTurnsFor(hitter).contains(target)) {
+								if(g.getBoard().getPossibleTurnsFor(hitter).contains(target)) {
 				        			
 									//Move the figure from target to hitter
 				        			g.getBoard().moveOnBoard(hitter, target);
@@ -206,14 +209,9 @@ public class Controller extends HttpServlet {
 										//Do a random Move for the Com-player after the non-Com-Player did one.
 										//Get the Player-object of the Com-player.
 										Player com = (g.getBlack().getName().equals("AI")) ? g.getBlack() : g.getWhite();
-
-										//Gets a random figure of the Com-players team
-										ArrayList<Vector2> hitters = FigureSelector.selectAliveEnemyTeam(g.getBoard().getBoard(), player.getTeam());
 										
-										hitter = hitters.get(new Random().nextInt(hitters.size() - 1));
-										
-										//Does a random move with the random figure. 
-										g.getBoard().moveOnBoard(hitter, com.getTurn(hitter, g.getBoard()));
+										//Does a random move with a random figure. 
+										com.doTurn(g.getBoard());
 										
 										//Increment the round-counter
 										g.setRound(1);
@@ -222,7 +220,7 @@ public class Controller extends HttpServlet {
 					        	
 					        	}
 								
-						//	}
+							}
 							
 						}
 					

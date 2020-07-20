@@ -62,18 +62,16 @@ public class Player {
 	}
 
 	/**
-	 * Only used for further implementation in the {@link AI} class. Should return a
-	 * valid move for the specified figure.
+	 * Only used for further implementation in the {@link AI} class. Should return
+	 * true if a figure has moved.
 	 * 
-	 * @param figur the position representing the figure for which the valid turn
-	 *              should be returned.
 	 * @param board that contains the figure.
 	 * 
-	 * @return a position on the board representing the valid move.
+	 * @return value indicating if the figure has been moved
 	 * 
-	 * @see AI#getTurn(GameBoard)
+	 * @see AI#doTurn(GameBoard)
 	 */
-	public Vector2 getTurn(GameBoard board) {
-		return null;
+	public boolean doTurn(GameBoard board) {
+		return false;
 	}
 }

@@ -29,27 +29,26 @@ public class AI extends Player {
 
 	/**
 	 * Calculates a valid but random turn for a random figure that belongs to the
-	 * AI's team. This methods expects only check and not checkmate and will return
-	 * a false turn if the current situation is checkmate.
+	 * AI's team, and executes it. This methods expects only check and not check
+	 * mate and will return a false turn if the current situation is check mate.
 	 * 
-	 * @return the possible turn as an absolute position on the board, or
-	 *         {@code null} if there is no possible turn.
-	 * 
-	 * @throws InvalidParameterException if there is no valid figure at the given
-	 *                                   position.
+	 * @return {@code true} and only if the random figure moved on the board,
+	 *         {@code false} otherwise.
 	 * 
 	 * @see GameBoard#getPossibleTurnsFor(Vector2)
 	 */
 	@Override
-	public Vector2 getTurn(GameBoard board) {
+	public boolean doTurn(GameBoard board) {
 		ArrayList<Vector2> team = FigureSelector.selectAliveTeam(board.getBoard(), getTeam());
 		team.removeIf((pos) -> board.getPossibleTurnsFor(pos).size() == 0);
 		if (team.size() != 0) {
-			ArrayList<Vector2> turns = board.getPossibleTurnsFor(team.get(random.nextInt(team.size())));
+			Vector2 figure = team.get(random.nextInt(team.size()));
+			ArrayList<Vector2> turns = board.getPossibleTurnsFor(figure);
 			if (turns.size() != 0) {
-				return turns.get(random.nextInt(turns.size()));
+				board.moveOnBoard(figure, turns.get(random.nextInt(turns.size())));
+				return true;
 			}
 		}
-		return null;
+		return false;
 	}
 }

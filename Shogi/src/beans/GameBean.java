@@ -82,7 +82,7 @@ public class GameBean {
 	public int getPlayerTeam(int x, int y) {
 		if (this.getBoard().getBoard()[x][y] != null) {
 			if (white instanceof AI) {
-				return board.getBoard()[x][y].getTeam() == TeamType.WHITE ? 2 : 1;
+				return board.getBoard()[x][y].getTeam() == TeamType.WHITE ? 1 : 2;
 			} else if (black instanceof AI) {
 				return board.getBoard()[x][y].getTeam() == TeamType.BLACK ? 2 : 1;
 			}

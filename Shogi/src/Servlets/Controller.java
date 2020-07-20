@@ -211,10 +211,11 @@ public class Controller extends HttpServlet {
 										Player com = (g.getBlack().getName().equals("AI")) ? g.getBlack() : g.getWhite();
 										
 										//Does a random move with a random figure. 
-										com.doTurn(g.getBoard());
+										if(com.doTurn(g.getBoard()) == false) {
+											//The Com player cannot move anymore. Noone has won.
+											response.sendRedirect(request.getContextPath() + "/jsp/pat.jsp");
 										
-										//Increment the round-counter
-										g.setRound(1);
+										}
 										
 									}
 					        	

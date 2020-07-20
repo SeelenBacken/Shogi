@@ -87,6 +87,13 @@ public class Figure {
 		return changeType;
 	}
 
+	/**
+	 * Getter of the team.
+	 * 
+	 * @return the team
+	 * 
+	 * @see #Figure(FigureType, FigureType, TeamType)
+	 */
 	public TeamType getTeam() {
 		return team;
 	}
@@ -198,7 +205,7 @@ public class Figure {
 	 * 
 	 * @return the relative file path of the picture as a String
 	 */
-	public String getPicturePath() {		
+	public String getPicturePath() {
 		if (team == TeamType.NONE) {
 			throw new IllegalStateException("Team of this figure is " + TeamType.NONE + "!");
 		}

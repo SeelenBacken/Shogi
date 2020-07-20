@@ -1,5 +1,6 @@
 package dataclasses;
 
+import java.security.InvalidParameterException;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -21,17 +22,20 @@ public class AI extends Player {
 	 * @param team the team this AI will play.
 	 */
 	public AI(TeamType team) {
-		super(team, "AI");
+		super("AI", team);
 		random = new Random();
 	}
 
 	/**
-	 * Calculates a valid but random turn for a speciefied figur it must be ensured
-	 * that the figur can make a turn.
+	 * Calculates a valid but random turn for a specified figure it must be ensured
+	 * that the figure can make a turn.
 	 * 
 	 * @return the possible turn as an absolute position on the board.
 	 * 
-	 * @throws IllegalArgumentException if the figur has no possible turns at all.
+	 * @throws InvalidParameterException if there is no valid figure at the given
+	 *                                   position.
+	 * 
+	 * @see GameBoard#getPossibleTurnsFor(Vector2)
 	 */
 	@Override
 	public Vector2 getTurn(Vector2 figur, GameBoard board) {

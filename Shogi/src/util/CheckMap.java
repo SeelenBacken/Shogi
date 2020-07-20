@@ -22,6 +22,7 @@ import dataclasses.Vector2;
  * 
  */
 public class CheckMap {
+
 	private final ArrayList<List<Vector2>> paths;
 	private final ArrayList<Integer> priorities;
 	private final ArrayList<Vector2> crucialPositions;
@@ -61,6 +62,15 @@ public class CheckMap {
 			}
 		}
 		paths.add(path);
+	}
+
+	/**
+	 * Getter of the paths.
+	 * 
+	 * @return the paths
+	 */
+	public ArrayList<List<Vector2>> getPaths() {
+		return paths;
 	}
 
 	/**

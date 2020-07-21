@@ -126,57 +126,102 @@ public class Controller extends HttpServlet {
 			
 			//referer: board.jsp
 			
+//			g = (GameBean) request.getSession().getAttribute("g");
+			
+			System.out.println("a");
+			
 			//The variable player saves the Player-objcet which holds the non-computer-player.
 			Player player = (g.getBlack().getName().equals("AI")) ? g.getWhite() : g.getBlack();
 	 
+			System.out.println("b");
+			
 			//Processing the request-parameters. This is the information of which turns were made.
 	        //This is the originating position of a figure on the gameboard or in the prison.
 			Vector2 hitter = new Vector2(letterToXOrdinate(request.getParameter("Xh").charAt(0)), Integer.parseInt(request.getParameter("Yh")));
 	        
+			System.out.println("c");
+			
 			//This is the resulting position on the gameboard.
 			Vector2 target = new Vector2(letterToXOrdinate(request.getParameter("Xt").charAt(0)), Integer.parseInt(request.getParameter("Yt")));
 	        
+			System.out.println("d");
+			
 			//This Vector shows which figure has to be upgraded or downgraded.
 			String x = String.valueOf(request.getParameter("Xc").charAt(0));
+			
+			System.out.println("e");
+			
 			String y = request.getParameter("Yc");
-			if((!x.equals("") && !y.equals("")) || (!x.equals("Z") && !y.equals("-1"))) {
+			
+			System.out.println("f");
+			
+			if((!x.equals("Z") && !y.equals("-1")) && (!x.equals("") && !y.equals(""))) {
+				
+				System.out.println("f1");
 				
 				Vector2 upgrade = new Vector2(letterToXOrdinate(x.charAt(0)), Integer.parseInt(y));
+				
+				System.out.println("f2");
 				
 				//The player wants to upgrade a figure.
 				//Proove if the figure is in the gameboard (-1 < x,y < 10) and than change type.
 				if(upgrade.getX() >= 0 && upgrade.getY() >= 0 && upgrade.getX() < 10 && upgrade.getY() < 10) {
 				
+					System.out.println("f3");
+					
 					//Proove if the figure that is moved belongs to the non-Com-player.
 					if(g.getBoard().getBoard()[upgrade.getX()][upgrade.getY()].getTeam().equals(player.getTeam())) {
-		        		g.getBoard().getBoard()[upgrade.getX()][upgrade.getY()].changeType();
+		        	
+						System.out.println("f4");
+						
+						g.getBoard().getBoard()[upgrade.getX()][upgrade.getY()].changeType();
+						
+						System.out.println("f5");
 		        	}
 					
 				}
 				
 			}
 			
+			System.out.println("g");
+			
 			//The player wants to move a figure on the gameboard or from the prison into the gameboard. 
 			//Prooves if the originating position is in the board.
 			if(hitter.getX() >= 0 && hitter.getY() >= 0 && hitter.getX() < 10 && hitter.getY() < 10) {
 				
+				System.out.println("h");
+				
 				//Prooves if there is a valid figure at the chosen position.
 				if(g.getBoard().getBoard()[hitter.getX()][hitter.getY()] != null) {
+					
+					System.out.println("i");
 					
 					//Prooves if the hitter-figure belongs to the non-Com-player.
 					if(g.getBoard().getBoard()[hitter.getX()][hitter.getY()].getTeam().equals(player.getTeam())) {
 						
+						System.out.println("j");
+						
 						//Prooves if the targeting position is in the board.
 						if(target.getX() >= 0 && target.getY() >= 0 && target.getX() < 10 && target.getY() < 10) {
+							
+							System.out.println("k");
 							
 							//Prooves if the target-figure doesn't belong to the non-Com-player.
 							if(g.getBoard().getBoard()[target.getX()][target.getY()] == null || !g.getBoard().getBoard()[target.getX()][target.getY()].getTeam().equals(player.getTeam())) {
 								
+								System.out.println("l");
+								
 								//Prooves if the target is accessible for the figure on the hitter-position.
 								if(g.getBoard().getPossibleTurnsFor(hitter).contains(target)) {
 				        			
+									System.out.println("m");
+									
 									//Move the figure from target to hitter
 				        			g.getBoard().moveOnBoard(hitter, target);
+				        			g.getBoard().clearPossibleTurns();
+				        			
+				        			System.out.println(g.getBoard().getBoard()[hitter.getX()][hitter.getY()] == null);
+				        			System.out.println(g.getBoard().getBoard()[target.getX()][target.getY()].getType());
 				        			
 				        			//Checks if a Team is chackMate 
 					        		if(g.getBoard().isCheckMate(g.getBlack().getTeam())) {
@@ -215,6 +260,8 @@ public class Controller extends HttpServlet {
 											//The Com player cannot move anymore. Noone has won.
 											response.sendRedirect(request.getContextPath() + "/jsp/pat.jsp");
 										
+											System.out.println("Achtung");
+											
 										}
 										
 									}
@@ -228,14 +275,20 @@ public class Controller extends HttpServlet {
 					}
 				
 				}
+				System.out.println("n");
+				
 				//If the originating position is below 0, the absolute amount is the index of the figure in a prison.	
         	} else {
+        		
+        		System.out.println("o");
         		
         		//Get the given figure from the non-Com-players prison.
         		
 				int index = 0;
         		
 				if(hitter.getX() == -1) {
+					
+					System.out.println("p");
 					
 					if (target.getY() == -1){
 						index = (player.getTeam().equals(TeamType.BLACK)) ? g.getBoard().getBlackPrison().lastIndexOf(Figure.getBishop(TeamType.BLACK)) : g.getBoard().getWhitePrison().lastIndexOf(Figure.getBishop(TeamType.WHITE));
@@ -252,42 +305,65 @@ public class Controller extends HttpServlet {
 			    	} else if(target.getY() == -7){
 			    		index = (player.getTeam().equals(TeamType.BLACK)) ? g.getBoard().getBlackPrison().lastIndexOf(Figure.getLance(TeamType.BLACK)) : g.getBoard().getWhitePrison().lastIndexOf(Figure.getLance(TeamType.WHITE));
 			    	} 
+					
+					System.out.println("index: " + index);
 
 					Figure f = null;
 					if(player.getTeam().equals(TeamType.BLACK)) {
 						
+						System.out.println("q");
+						
 						if(g.getBoard().getBlackPrison().size() > 0) {
+							
+							System.out.println("r");
 						
 							f = g.getBoard().getBlackPrison().get(index);
+							
+							System.out.println("s");
 						
 						}
 						
 					} else {
 						
+						System.out.println("t");
+						
 						if(g.getBoard().getWhitePrison().size() > 0) {
+							
+							System.out.println("u");
 					
 							f = g.getBoard().getWhitePrison().get(index);
+							
+							System.out.println("v");
 						
 						}
 						
 					}
 					
+					System.out.println("w");
+					
 					if(f != null) {
+						
+						System.out.println("x");
 						
 						//Prooves if the given traget is on the gameboard.
 						if(target.getX() >= 0 && target.getY() >= 0 && target.getX() < 10 && target.getY() < 10) {
 							
+							System.out.println("y");
+							
 							//Prooves if the given target has no figure on it.
 							if(g.getBoard().getBoard()[target.getX()][target.getY()].getType().equals(FigureType.UNDEFINED)) {
 			        			
+								System.out.println("z");
+								
 								//Prooves if the move would directly check the Com-Player
 								if(!g.getBoard().causesCheck(target, f)) {
+									
+									System.out.println("1");
 									
 									//Place the figure on the target.
 									g.getBoard().getBoard()[target.getX()][target.getY()] = f;
 				        			
-									//Increment the round-counter
-				        			g.setRound(1);
+									System.out.println("2");
 				        			
 								}
 								

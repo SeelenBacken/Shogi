@@ -15,7 +15,9 @@
 	</head>
 	
 	<body>
-
+		
+		<c:out value="${g.getBlack().getName().equals('AI') ? g.getWhite().getName() : g.getBlack().getName()}"></c:out>
+		
 		<section class="section">
 		
 			<form method="GET" action="http://localhost:8080/Shogi/Controller">	

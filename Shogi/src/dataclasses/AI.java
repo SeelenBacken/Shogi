@@ -45,7 +45,9 @@ public class AI extends Player {
 			Vector2 figure = team.get(random.nextInt(team.size()));
 			ArrayList<Vector2> turns = board.getPossibleTurnsFor(figure);
 			if (turns.size() != 0) {
-				board.moveOnBoard(figure, turns.get(random.nextInt(turns.size())));
+				Vector2 test = turns.get(random.nextInt(turns.size()));
+				board.moveOnBoard(figure, test);
+				board.clearPossibleTurns();
 				return true;
 			}
 		}

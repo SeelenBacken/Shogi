@@ -4,6 +4,7 @@ import dataclasses.AI;
 import dataclasses.GameBoard;
 import dataclasses.History;
 import dataclasses.Player;
+import enums.FigureType;
 import enums.TeamType;
 
 /**
@@ -88,6 +89,47 @@ public class GameBean {
 			}
 		}
 		return 1;
+	}
+	
+	/**
+	 * 
+	 * Returns the number of Figures with given {@link FigureType} in the prison of a given {@link Player}.
+	 * The player is identified by the parameter playerNumber.
+	 * 
+	 * @param playerNumber int: This parameter identifies the player whose prison is used for the count. The value 1 stands for the human player. The value 2 stands for the {@link AI} player.
+	 * @param type FigureType: This parameter passes a {@link FigureType}. The figures to be counted in a prison must all have this FigureType.
+	 * @return long: The return-value is the number of Figures of the given {@link FigureType} in the prison of the given {@link Player}. The return-value is -1 if the parameter playerNumber is anything else than 1 or 2.
+	 */
+	public long getPlayerPrisonCountOfFigureType(int playerNumber, FigureType type) {
+		
+		if(playerNumber == 1) {
+		
+			if (white instanceof AI) {
+				
+				return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == type).count();
+			
+			} else if (black instanceof AI) {
+				
+				return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == type).count();
+			
+			}
+			
+		} else if(playerNumber == 2) {
+			
+			if (white instanceof AI) {
+				
+				return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == type).count();
+			
+			} else if (black instanceof AI) {
+				
+				return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == type).count();
+			
+			}
+			
+		} 
+		
+		return -1;
+			
 	}
 
 	/**

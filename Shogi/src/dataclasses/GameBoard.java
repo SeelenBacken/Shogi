@@ -66,7 +66,7 @@ public class GameBoard {
 	public ArrayList<Figure> getBlackPrison() {
 		return blackPrison;
 	}
-
+	
 	/**
 	 * Getter of the white prison.
 	 * 
@@ -240,7 +240,7 @@ public class GameBoard {
 			throw new InvalidParameterException("No hitter at given position: " + hitter);
 		}
 		if (ensureTeamTypeForPosition(target) != TeamType.NONE) {
-			if (board[target.getX()][target.getY()].getTeam() == board[hitter.getX()][hitter.getY()].getTeam()) {
+			if (ensureTeamTypeForPosition(target) == ensureTeamTypeForPosition(hitter)) {
 				return;
 			}
 			switch (ensureTeamTypeForPosition(target)) {
@@ -367,6 +367,8 @@ public class GameBoard {
 	 */
 	private ArrayList<Vector2> calculatePossibleTurnsFor(Vector2 pos) {
 		TreeSet<Vector2> possibleTurns = new TreeSet<Vector2>(new Vector2Comparator());
+		System.out.println("figure:" + pos);
+		System.out.println(this.ensureFigureTypeForPosition(pos));
 		switch (ensureFigureTypeForPosition(pos)) {
 		case KING:
 			calculateKingTurns(possibleTurns, pos);
@@ -478,9 +480,10 @@ public class GameBoard {
 	 */
 	private void calculateTurnsUsingPositions(TreeSet<Vector2> turns, Vector2 currPos, Vector2... relPositions) {
 		for (Vector2 relPos : relPositions) {
-			Vector2 pos = Vector2.add(currPos, relPos);
+			TeamType currPosTeam = ensureTeamTypeForPosition(currPos);
+			Vector2 pos = Vector2.add(currPos, currPosTeam == TeamType.BLACK ? relPos.getInverted() : relPos);
 			if (!isOutOfBounds(pos)
-					&& board[currPos.getX()][currPos.getY()].getTeam() != ensureTeamTypeForPosition(pos)) {
+					&& currPosTeam != ensureTeamTypeForPosition(pos)) {
 				turns.add(pos);
 			}
 		}
@@ -505,6 +508,9 @@ public class GameBoard {
 	private void calculateTurnsUsingDirections(TreeSet<Vector2> turns, Vector2 pos, Vector2... directions) {
 		TeamType team = ensureTeamTypeForPosition(pos);
 		for (Vector2 dir : directions) {
+			if(ensureTeamTypeForPosition(pos) == TeamType.BLACK) {
+				dir = dir.getInverted();
+			}
 			for (Vector2 currPos = new Vector2(pos); !isOutOfBounds(currPos); currPos = Vector2.add(currPos, dir)) {
 				if (team == ensureTeamTypeForPosition(currPos)) {
 					break;

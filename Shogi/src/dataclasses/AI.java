@@ -40,17 +40,25 @@ public class AI extends Player {
 	@Override
 	public boolean doTurn(GameBoard board) {
 		ArrayList<Vector2> team = FigureSelector.selectAliveTeam(board.getBoard(), getTeam());
-		team.removeIf((pos) -> board.getPossibleTurnsFor(pos).size() == 0);
-		if (team.size() != 0) {
+		team.removeIf((pos) -> board.getPossibleTurnsFor(pos).isEmpty());
+		if (!team.isEmpty()) {
 			Vector2 figure = team.get(random.nextInt(team.size()));
 			ArrayList<Vector2> turns = board.getPossibleTurnsFor(figure);
-			if (turns.size() != 0) {
+			if (!turns.isEmpty()) {
 				Vector2 test = turns.get(random.nextInt(turns.size()));
+				
+				System.out.println(".--------------------------------------------");
+				
+				System.out.println("figure:" + figure);
+				System.out.println(board.ensureFigureTypeForPosition(figure));
+				System.out.println("test:" + test);
+				
 				board.moveOnBoard(figure, test);
 				board.clearPossibleTurns();
 				return true;
 			}
 		}
+		board.clearPossibleTurns();
 		return false;
 	}
 }

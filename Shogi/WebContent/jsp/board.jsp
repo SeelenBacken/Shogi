@@ -120,59 +120,59 @@
 		            <div id="gravep2" class="player2">
 		                <nav class="level gLevel">
 		                    <div class="level-item">
-		                        <div id="knight2" class="gravepiece KNIGHT" draggable="true" ondragstart="drag(event)">0</div>
+		                        <div id="knight2" class="gravepiece KNIGHT" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, FigureType.KNIGHT)}" /></div>
 		                    </div>
 		                    <div class="level-item">
-		                        <div id="pawn2" class="gravepiece PAWN" draggable="true" ondragstart="drag(event)">0</div>
+		                        <div id="pawn2" class="gravepiece PAWN" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, FigureType.PAWN)}" /></div>
 		                    </div>
 		                    <div class="level-item">
-		                        <div id="lance2" class="gravepiece LANCE" draggable="true" ondragstart="drag(event)">0</div>
+		                        <div id="lance2" class="gravepiece LANCE" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, FigureType.LANCE)}" /></div>
 		                    </div>
 		                </nav>
 		                <nav class="level">
 		                    <div class="level-item">
-		                        <div id="gold2" class="gravepiece GOLDEN_GENERAL" draggable="true" ondragstart="drag(event)">0</div>
+		                        <div id="gold2" class="gravepiece GOLDEN_GENERAL" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, FigureType.GOLDEN_GENERAL)}" /></div>
 		                    </div>
 		                    <div class="level-item">
-		                        <div id="silver2" class="gravepiece SILVER_GENERAL" draggable="true" ondragstart="drag(event)">0</div>
+		                        <div id="silver2" class="gravepiece SILVER_GENERAL" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, FigureType.SILVER_GENERAL)}" /></div>
 		                    </div>
 		                </nav>
 		                <nav class="level">
 		                    <div class="level-item">
 		                    
-		                        <div id="bishop2" class="gravepiece BISHOP" draggable="true" ondragstart="drag(event)">0</div>
+		                        <div id="bishop2" class="gravepiece BISHOP" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, FigureType.BISHOP)}" /></div>
 		                    </div>
 		                    <div class="level-item">
-		                        <div id="rook2" class="gravepiece TOWER" draggable="true" ondragstart="drag(event)">0</div>
+		                        <div id="rook2" class="gravepiece TOWER" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, FigureType.TOWER)}" /></div>
 		                    </div>
 		                </nav>
 		            </div>
 		            <div id="gravep1" class="player1">
 		                <nav class="level gLevel">
 		                    <div class="level-item">
-		                        <div id="bishop1" class="gravepiece BISHOP" draggable="true" ondragstart="drag(event)">0</div>
+		                        <div id="bishop1" class="gravepiece BISHOP" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, FigureType.BISHOP)}" /></div>
 		                    </div>
 		                    <div class="level-item">
-		                        <div id="rook1" class="gravepiece TOWER" draggable="true" ondragstart="drag(event)">0</div>
-		                    </div>
-		                </nav>
-		                <nav class="level">
-		                    <div class="level-item">
-		                        <div id="gold1" class="gravepiece GOLDEN_GENERAL" draggable="true" ondragstart="drag(event)">0</div>
-		                    </div>
-		                    <div class="level-item">
-		                        <div id="silver1" class="gravepiece SILVER_GENERAL" draggable="true" ondragstart="drag(event)">0</div>
+		                        <div id="rook1" class="gravepiece TOWER" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, FigureType.TOWER)}" /></div>
 		                    </div>
 		                </nav>
 		                <nav class="level">
 		                    <div class="level-item">
-		                        <div id="knight1" class="gravepiece KNIGHT" draggable="true" ondragstart="drag(event)">0</div>
+		                        <div id="gold1" class="gravepiece GOLDEN_GENERAL" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, FigureType.GOLDEN_GENERAL)}" /></div>
 		                    </div>
 		                    <div class="level-item">
-		                        <div id="pawn1" class="gravepiece PAWN" draggable="true" ondragstart="drag(event)">0</div>
+		                        <div id="silver1" class="gravepiece SILVER_GENERAL" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, FigureType.SILVER_GENERAL)}" /></div>
+		                    </div>
+		                </nav>
+		                <nav class="level">
+		                    <div class="level-item">
+		                        <div id="knight1" class="gravepiece KNIGHT" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, FigureType.KNIGHT)}" /></div>
 		                    </div>
 		                    <div class="level-item">
-		                        <div id="lance1" class="gravepiece LANCE" draggable="true" ondragstart="drag(event)">0</div>
+		                        <div id="pawn1" class="gravepiece PAWN" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, FigureType.PAWN)}" /></div>
+		                    </div>
+		                    <div class="level-item">
+		                        <div id="lance1" class="gravepiece LANCE" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, FigureType.LANCE)}" /></div>
 		                    </div>
 		                </nav>
 		            </div>

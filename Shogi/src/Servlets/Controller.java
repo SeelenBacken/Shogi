@@ -151,7 +151,7 @@ public class Controller extends HttpServlet {
 				
 				//The player wants to upgrade a figure.
 				//Proove if the figure is in the gameboard (-1 < x,y < 10) and than change type.
-				if(upgrade.getX() >= 0 && upgrade.getY() >= 0 && upgrade.getX() < 10 && upgrade.getY() < 10) {
+				if(upgrade.getX() >= 0 && upgrade.getY() >= 6 && upgrade.getX() < 10 && upgrade.getY() < 10) {
 					
 					//Proove if the figure that is moved belongs to the non-Com-player.
 					if(g.getBoard().getBoard()[upgrade.getX()][upgrade.getY()].getTeam().equals(player.getTeam())) {

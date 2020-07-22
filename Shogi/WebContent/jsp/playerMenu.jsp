@@ -21,7 +21,7 @@
 	
 	    <div id="content" class="form__group field">
 	    	
-	    	<form method="GET" action="http://localhost:8080/Shogi/Controller">
+	    	<form method="GET" action="http://localhost:8080/Shogi/Controller" name="form">
 				
 				<table>
 	    			<tr>
@@ -38,7 +38,7 @@
 	    				<td colspan="2">&nbsp;</td>
 	    			</tr>
 	    			<tr>
-	    				<td colspan="2"><input type="submit" value="Spielen" class="Button" /></td>
+	    				<td colspan="2"><input type="submit" class="Button" /></td>
 	    			</tr>
 	    		</table>
 		

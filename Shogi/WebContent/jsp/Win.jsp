@@ -10,12 +10,10 @@
 	
 	</head>
 	
-	<body>
+	<body style="background-image: url('../res/baloons.png');">
 		<header>
 			<div id = "title">
 		        <h1>Sie haben Gewonnen!</h1>
-		        <br><br>
-		        <img src="../res/ballons.jpg">
 		    </div>
 		</header>
 	    

@@ -19,7 +19,7 @@
 			</div>
 		</header>
 	
-		<div id = "content">
+		<div id = "content" style="padding-top: 1em;">
 			<h2>Angaben gemäß &sect; 5 TMG</h2>
 			<p>
 				Fabian Schwickert<br>

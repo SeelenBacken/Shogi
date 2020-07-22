@@ -111,6 +111,15 @@ table.playfield tr:nth-child(even) td:nth-child(even){
     background-color: gray !important;
 }
 
+.inputStyle
+{
+	background: #d2b48c;
+	width: 15%;
+	height: 30px;
+	padding-left: 10px;
+	
+}
+
 @keyframes backgroundHighlight {
     from {background-color: #deb887}
     to {background-color: gray}

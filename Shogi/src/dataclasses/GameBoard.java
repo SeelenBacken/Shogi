@@ -48,6 +48,24 @@ public class GameBoard {
 		whitePrison = new ArrayList<Figure>(20);
 		possibleTurns = new TreeMap<Vector2, ArrayList<Vector2>>(new Vector2Comparator());
 	}
+	
+	/**
+	 * Getter of the position of the black kings position.
+	 * 
+	 * @return the black kings position.
+	 */
+	public Vector2 getBlackKingPos() {
+		return this.blackKingPos;
+	}
+	
+	/**
+	 * Getter of the position of the white kings position.
+	 * 
+	 * @return the white kings position.
+	 */
+	public Vector2 getWhiteKingPos() {
+		return this.whiteKingPos;
+	}
 
 	/**
 	 * Getter of the game board.
@@ -239,22 +257,23 @@ public class GameBoard {
 		if (ensureFigureTypeForPosition(hitter) == FigureType.UNDEFINED) {
 			throw new InvalidParameterException("No hitter at given position: " + hitter);
 		}
-		if (ensureTeamTypeForPosition(target) != TeamType.NONE) {
-			if (ensureTeamTypeForPosition(target) == ensureTeamTypeForPosition(hitter)) {
-				return;
-			}
-			switch (ensureTeamTypeForPosition(target)) {
-			case BLACK:
-				blackPrison.add(board[target.getX()][target.getY()]);
-				break;
-			case WHITE:
-				whitePrison.add(board[target.getX()][target.getY()]);
-			default:
-				break;
-			}
+		
+		if (ensureTeamTypeForPosition(target) == ensureTeamTypeForPosition(hitter)) {
+			return;
 		}
+		switch (ensureTeamTypeForPosition(target)) {
+		case BLACK:
+			this.whitePrison.add(board[target.getX()][target.getY()]);
+			break;
+		case WHITE:
+			this.blackPrison.add(board[target.getX()][target.getY()]);
+		default:
+			break;
+		}
+		
 		board[target.getX()][target.getY()] = board[hitter.getX()][hitter.getY()];
 		board[hitter.getX()][hitter.getY()] = null;
+		
 	}
 
 	/**
@@ -367,8 +386,6 @@ public class GameBoard {
 	 */
 	private ArrayList<Vector2> calculatePossibleTurnsFor(Vector2 pos) {
 		TreeSet<Vector2> possibleTurns = new TreeSet<Vector2>(new Vector2Comparator());
-		System.out.println("figure:" + pos);
-		System.out.println(this.ensureFigureTypeForPosition(pos));
 		switch (ensureFigureTypeForPosition(pos)) {
 		case KING:
 			calculateKingTurns(possibleTurns, pos);
@@ -511,7 +528,7 @@ public class GameBoard {
 			if(ensureTeamTypeForPosition(pos) == TeamType.BLACK) {
 				dir = dir.getInverted();
 			}
-			for (Vector2 currPos = new Vector2(pos); !isOutOfBounds(currPos); currPos = Vector2.add(currPos, dir)) {
+			for (Vector2 currPos = Vector2.add(pos, dir); !isOutOfBounds(currPos); currPos = Vector2.add(currPos, dir)) {
 				if (team == ensureTeamTypeForPosition(currPos)) {
 					break;
 				} else if (TeamType.NONE != ensureTeamTypeForPosition(pos)) {

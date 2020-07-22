@@ -97,33 +97,137 @@ public class GameBean {
 	 * The player is identified by the parameter playerNumber.
 	 * 
 	 * @param playerNumber int: This parameter identifies the player whose prison is used for the count. The value 1 stands for the human player. The value 2 stands for the {@link AI} player.
-	 * @param type FigureType: This parameter passes a {@link FigureType}. The figures to be counted in a prison must all have this FigureType.
+	 * @param type String: This parameter passes a String to identify a {@link FigureType}. The figures to be counted in a prison must all have this FigureType.
 	 * @return long: The return-value is the number of Figures of the given {@link FigureType} in the prison of the given {@link Player}. The return-value is -1 if the parameter playerNumber is anything else than 1 or 2.
 	 */
-	public long getPlayerPrisonCountOfFigureType(int playerNumber, FigureType type) {
+	public long getPlayerPrisonCountOfFigureType(int playerNumber, String type) {
 		
 		if(playerNumber == 1) {
 		
 			if (white instanceof AI) {
 				
-				return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == type).count();
+				switch (type) {
+				
+					case "PAWN":
+						return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == FigureType.PAWN).count();
+					
+					case "LANCE":
+						return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == FigureType.LANCE).count();
+					
+					case "KNIGHT":
+						return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == FigureType.KNIGHT).count();
+					
+					case "TOWER":
+						return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == FigureType.TOWER).count();
+					
+					case "GOLDEN_GENERAL":
+						return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == FigureType.GOLDEN_GENERAL).count();
+					
+					case "SILVER_GENERAL":
+						return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == FigureType.SILVER_GENERAL).count();
+					
+					case "BISHOP":	
+						return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == FigureType.BISHOP).count();
+	
+					default:
+						return 0;
+					
+				}
 			
 			} else if (black instanceof AI) {
+
+				switch (type) {
 				
-				return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == type).count();
-			
+					case "PAWN":
+						return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == FigureType.PAWN).count();
+					
+					case "LANCE":
+						return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == FigureType.LANCE).count();
+					
+					case "KNIGHT":
+						return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == FigureType.KNIGHT).count();
+					
+					case "TOWER":
+						return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == FigureType.TOWER).count();
+					
+					case "GOLDEN_GENERAL":
+						return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == FigureType.GOLDEN_GENERAL).count();
+					
+					case "SILVER_GENERAL":
+						return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == FigureType.SILVER_GENERAL).count();
+					
+					case "BISHOP":	
+						return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == FigureType.BISHOP).count();
+	
+					default:
+						return 0;
+					
+				}
+				
 			}
 			
 		} else if(playerNumber == 2) {
 			
 			if (white instanceof AI) {
 				
-				return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == type).count();
-			
+				switch (type) {
+					
+					case "PAWN":
+						return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == FigureType.PAWN).count();
+					
+					case "LANCE":
+						return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == FigureType.LANCE).count();
+					
+					case "KNIGHT":
+						return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == FigureType.KNIGHT).count();
+					
+					case "TOWER":
+						return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == FigureType.TOWER).count();
+					
+					case "GOLDEN_GENERAL":
+						return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == FigureType.GOLDEN_GENERAL).count();
+					
+					case "SILVER_GENERAL":
+						return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == FigureType.SILVER_GENERAL).count();
+					
+					case "BISHOP":	
+						return this.getBoard().getWhitePrison().stream().filter(f -> f.getType() == FigureType.BISHOP).count();
+	
+					default:
+						return 0;
+					
+				}
+				
 			} else if (black instanceof AI) {
 				
-				return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == type).count();
-			
+				switch (type) {
+				
+					case "PAWN":
+						return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == FigureType.PAWN).count();
+					
+					case "LANCE":
+						return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == FigureType.LANCE).count();
+					
+					case "KNIGHT":
+						return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == FigureType.KNIGHT).count();
+					
+					case "TOWER":
+						return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == FigureType.TOWER).count();
+					
+					case "GOLDEN_GENERAL":
+						return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == FigureType.GOLDEN_GENERAL).count();
+					
+					case "SILVER_GENERAL":
+						return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == FigureType.SILVER_GENERAL).count();
+					
+					case "BISHOP":	
+						return this.getBoard().getBlackPrison().stream().filter(f -> f.getType() == FigureType.BISHOP).count();
+	
+					default:
+						return 0;
+					
+				}
+				
 			}
 			
 		} 

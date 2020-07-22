@@ -16,64 +16,98 @@
 	
 	<body>
 		
-		<c:out value="${g.getBlack().getName().equals('AI') ? g.getWhite().getName() : g.getBlack().getName()}"></c:out>
+		<br>
+		<b style="font-size: 40pt; text-align: center;"><c:out value="${g.getBlack().getName().equals('AI') ? g.getWhite().getName() : g.getBlack().getName()}"></c:out> vs. Com</b>
 		
 		<section class="section">
 		
-			<form method="GET" action="http://localhost:8080/Shogi/Controller">	
-		        
-		        <table>
-		        
-		        	<tr>
-		        		<th><h3>Verbessern Sie eine Figur (optional)</h3></th>
-		        		<th colspan="2"><h3>Bewegen Sie eine Figure (nötig)</h3></th>
-		        	</tr>
-		        	<tr>
-		        		<td><h4>Position:</h4></td>
-			        	<td><h4>Ausgangsposition:</h4></td>
-			        	<td><h4>Zielposition:</h4></td>
-		        	</tr>
-		        	<tr>
-		        		<td>
-		        			<label for="Xc">X-Ordinate</label>	
-			        		<input name="Xc" value="Z" type="text" maxlength="1" pattern="[A-I, Z]" />
-		        		</td>
-		        		<td>
-		        			<label for="Xh">X-Ordinate</label>
-		       				<input id="xstart" name="Xh" type="text" required="required" maxlength="1" pattern="[A-I, Z]" >
-		        		</td>
-		        		<td>
-		        			<label for="Xt">X-Ordinate</label>
-		        			<input name="Xt" type="text" required="required" maxlength="1" pattern="[A-I]" >
-		        		</td>
-		        	</tr>
-		        	<tr>
-		        		<td>
-		        			<label for="Yc">Y-Ordinate</label>
-							<input name="Yc" value="-1" type="text" maxlength="2" pattern="-?[0-8]{1}" />
-		        		</td>
-		        		<td>
-		        			<label for="Yh">Y-Ordinate</label>
-							<input id="ystart" name="Yh" type="text" required="required" maxlength="2" pattern="-?[0-8]{1}" >
-		        		</td>
-		        		<td>
-		        			<label for="Yt">Y-Ordinate</label>
-							<input name="Yt" type="text" required="required" maxlength="2" pattern="-?[0-8]{1}" ><br>
-		        		</td>
-		        	</tr>
-		        	<tr>
-		        		<td colspan="3">
-		        			<input name="submitMove" type="submit" class="Button" />
-		        		</td>
-		        	</tr>
-		        
-		        </table>
-		        		        
-			</form>
-		
 			<jsp:useBean id="g" class="beans.GameBean" scope="session" />
 		
-		    <div class="playContainer container" draggable="false">
+			<div style="margin-bottom: 30px;">
+		    
+		    	<form method="GET" action="http://localhost:8080/Shogi/Controller">	
+		        
+			        <table>
+			        
+			        	<tr>
+			        		<th><h3><b>Verbessern Sie eine Figur (optional)</b></h3><br></th>
+			        		<th colspan="2"  style="padding-left: 20px;"><h3><b>Bewegen Sie eine Figure (nötig)</b></h3><br></th>
+			        		<th><h3><b>Gefangene einsetzen:</b></h3><br></th>
+			        	</tr>
+			        	<tr>
+			        		<td><h4>Position:</h4></td>
+				        	<td style="padding-left: 20px;"><h4>Ausgangsposition:</h4></td>
+				        	<td style="padding-left: 20px;"><h4>Zielposition:</h4></td>
+				        	<td rowspan="4" style="padding-left: 20px;">
+				        		
+				        		<div>
+									
+									<p>Geben Sie Z als X-Wert für die Ausgangsposition an.<br>Für den Y-Wert geben Sie die unten angezeigte Nummer ein.</p>
+									
+									<br>
+									
+									<table style="border: none;">
+									
+										<tr>
+										
+											<td>-1: </td><td><div class="piece p1Piece BISHOP"></div></td>
+											<td>-2: </td><td><div class="piece p1Piece TOWER"></div></td>
+											<td>-3: </td><td><div class="piece p1Piece GOLDEN_GENERAL"></div></td>
+											<td>-4: </td><td><div class="piece p1Piece SILVER_GENERAL"></div></td>
+											<td>-5: </td><td><div class="piece p1Piece KNIGHT"></div></td>
+											<td>-6: </td><td><div class="piece p1Piece PAWN"></div></td>
+											<td>-7: </td><td><div class="piece p1Piece LANCE"></div></td>
+										
+										</tr>
+									
+									</table>
+										
+								</div>
+				        		
+				        	</td>
+			        	</tr>
+			        	<tr>
+			        		<td>
+			        			<label for="Xc">X-Ordinate</label>	
+				        		<input name="Xc" value="Z" type="text" maxlength="1" pattern="[A-I, Z]" />
+			        		</td>
+			        		<td style="padding-left: 20px;">
+			        			<label for="Xh">X-Ordinate</label>
+			       				<input id="xstart" name="Xh" type="text" required="required" maxlength="2" pattern="-?[A-I, Z]" >
+			        		</td>
+			        		<td style="padding-left: 20px;">
+			        			<label for="Xt">X-Ordinate</label>
+			        			<input name="Xt" type="text" required="required" maxlength="1" pattern="[A-I]" >
+			        		</td>
+			        	</tr>
+			        	<tr>
+			        		<td>
+			        			<label for="Yc">Y-Ordinate</label>
+								<input name="Yc" value="-1" type="text" maxlength="2" pattern="-?[0-8]{1}" />
+			        		</td>
+			        		<td style="padding-left: 20px;">
+			        			<label for="Yh">Y-Ordinate</label>
+								<input id="ystart" name="Yh" type="text" required="required" maxlength="2" pattern="-?[0-8]{1}" >
+			        		</td>
+			        		<td style="padding-left: 20px;">
+			        			<label for="Yt">Y-Ordinate</label>
+								<input name="Yt" type="text" required="required" maxlength="2" pattern="-?[0-8]{1}" ><br>
+			        		</td>
+			        	</tr>
+			        	<tr>
+			        		<td colspan="3" style="padding-top: 20px;">
+			        			<input name="submitMove" style="width: 300px; height: 60px; padding: 1px;" type="submit" class="button" />
+			        			<input type="button" onclick = "changeStyle()" value="Ansicht wechseln" class="button" style="margin-left: 20px;  height: 60px; padding: 1px;" />
+			        		</td>
+			        	</tr>
+			        
+			        </table>
+			        		        
+				</form>
+		    
+		    </div>
+		
+		    <div class="playContainer container" draggable="false" style="padding-left: 15em; padding-top: 1em; padding-bottom: 1em;">
  
  				<table class="playfield" draggable="false">
 			     
@@ -114,73 +148,70 @@
 		                <th>I</th>
 		            </tr>
 		            
-		        </table>
+		        </table> 
  			
 		        <div class="graveyard">
 		            <div id="gravep2" class="player2">
 		                <nav class="level gLevel">
 		                    <div class="level-item">
-		                        <div id="knight2" class="gravepiece KNIGHT" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, FigureType.KNIGHT)}" /></div>
+		                        <div id="knight2" class="gravepiece KNIGHT"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, 'KNIGHT')}" /></div>
 		                    </div>
 		                    <div class="level-item">
-		                        <div id="pawn2" class="gravepiece PAWN" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, FigureType.PAWN)}" /></div>
+		                        <div id="pawn2" class="gravepiece PAWN"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, 'PAWN')}" /></div>
 		                    </div>
 		                    <div class="level-item">
-		                        <div id="lance2" class="gravepiece LANCE" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, FigureType.LANCE)}" /></div>
+		                        <div id="lance2" class="gravepiece LANCE"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, 'LANCE')}" /></div>
 		                    </div>
 		                </nav>
 		                <nav class="level">
 		                    <div class="level-item">
-		                        <div id="gold2" class="gravepiece GOLDEN_GENERAL" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, FigureType.GOLDEN_GENERAL)}" /></div>
+		                        <div id="gold2" class="gravepiece GOLDEN_GENERAL"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, 'GOLDEN_GENERAL')}" /></div>
 		                    </div>
 		                    <div class="level-item">
-		                        <div id="silver2" class="gravepiece SILVER_GENERAL" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, FigureType.SILVER_GENERAL)}" /></div>
+		                        <div id="silver2" class="gravepiece SILVER_GENERAL"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, 'SILVER_GENERAL')}" /></div>
 		                    </div>
 		                </nav>
 		                <nav class="level">
 		                    <div class="level-item">
 		                    
-		                        <div id="bishop2" class="gravepiece BISHOP" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, FigureType.BISHOP)}" /></div>
+		                        <div id="bishop2" class="gravepiece BISHOP"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, 'BISHOP')}" /></div>
 		                    </div>
 		                    <div class="level-item">
-		                        <div id="rook2" class="gravepiece TOWER" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, FigureType.TOWER)}" /></div>
+		                        <div id="rook2" class="gravepiece TOWER"><c:out value="${g.getPlayerPrisonCountOfFigureType(2, 'TOWER')}" /></div>
 		                    </div>
 		                </nav>
 		            </div>
 		            <div id="gravep1" class="player1">
 		                <nav class="level gLevel">
 		                    <div class="level-item">
-		                        <div id="bishop1" class="gravepiece BISHOP" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, FigureType.BISHOP)}" /></div>
+		                        <div id="bishop1" class="gravepiece BISHOP" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, 'BISHOP')}" /></div>
 		                    </div>
 		                    <div class="level-item">
-		                        <div id="rook1" class="gravepiece TOWER" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, FigureType.TOWER)}" /></div>
-		                    </div>
-		                </nav>
-		                <nav class="level">
-		                    <div class="level-item">
-		                        <div id="gold1" class="gravepiece GOLDEN_GENERAL" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, FigureType.GOLDEN_GENERAL)}" /></div>
-		                    </div>
-		                    <div class="level-item">
-		                        <div id="silver1" class="gravepiece SILVER_GENERAL" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, FigureType.SILVER_GENERAL)}" /></div>
+		                        <div id="rook1" class="gravepiece TOWER" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, 'TOWER')}" /></div>
 		                    </div>
 		                </nav>
 		                <nav class="level">
 		                    <div class="level-item">
-		                        <div id="knight1" class="gravepiece KNIGHT" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, FigureType.KNIGHT)}" /></div>
+		                        <div id="gold1" class="gravepiece GOLDEN_GENERAL" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, 'GOLDEN_GENERAL')}" /></div>
 		                    </div>
 		                    <div class="level-item">
-		                        <div id="pawn1" class="gravepiece PAWN" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, FigureType.PAWN)}" /></div>
+		                        <div id="silver1" class="gravepiece SILVER_GENERAL" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, 'SILVER_GENERAL')}" /></div>
+		                    </div>
+		                </nav>
+		                <nav class="level">
+		                    <div class="level-item">
+		                        <div id="knight1" class="gravepiece KNIGHT" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, 'KNIGHT')}" /></div>
 		                    </div>
 		                    <div class="level-item">
-		                        <div id="lance1" class="gravepiece LANCE" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, FigureType.LANCE)}" /></div>
+		                        <div id="pawn1" class="gravepiece PAWN" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, 'PAWN')}" /></div>
+		                    </div>
+		                    <div class="level-item">
+		                        <div id="lance1" class="gravepiece LANCE" draggable="true" ondragstart="drag(event)"><c:out value="${g.getPlayerPrisonCountOfFigureType(1, 'LANCE')}" /></div>
 		                    </div>
 		                </nav>
 		            </div>
 		        </div>
 		    </div>
-		    
-		    <br>
-		    <input type="submit" onclick = "changeStyle()" value="Spielsteine wechseln" class="button" />
 		    
 		</section>
 		
@@ -237,7 +268,7 @@
 		    	document.getElementById("xstart").innerHTML = xs;
 		    	document.getElementById("ystart").innerHTML = ys;
 		    	
-		        ev.dataTransfer.setData("text", ev.target.id);
+		        ev.dataTransfer.setData("text/plain", ev.target.id);
 		        
 		        fields.forEach(function (field) {
 		        	console.log(field.innerHTML);

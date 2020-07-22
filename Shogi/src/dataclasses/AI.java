@@ -46,13 +46,6 @@ public class AI extends Player {
 			ArrayList<Vector2> turns = board.getPossibleTurnsFor(figure);
 			if (!turns.isEmpty()) {
 				Vector2 test = turns.get(random.nextInt(turns.size()));
-				
-				System.out.println(".--------------------------------------------");
-				
-				System.out.println("figure:" + figure);
-				System.out.println(board.ensureFigureTypeForPosition(figure));
-				System.out.println("test:" + test);
-				
 				board.moveOnBoard(figure, test);
 				board.clearPossibleTurns();
 				return true;

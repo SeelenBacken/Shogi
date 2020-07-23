@@ -158,8 +158,10 @@ public class Controller extends HttpServlet {
 					
 					//Proove if the figure that is moved belongs to the non-Com-player.
 					if(g.getBoard().getBoard()[upgrade.getX()][upgrade.getY()].getTeam().equals(player.getTeam())) {
-		    			
-						g.getBoard().getBoard()[upgrade.getX()][upgrade.getY()].changeType();
+						
+						if(g.getBoard().getBoard()[upgrade.getX()][upgrade.getY()].canChangeType()) {
+							g.getBoard().getBoard()[upgrade.getX()][upgrade.getY()].changeType();
+						}
 			
 					}
 					

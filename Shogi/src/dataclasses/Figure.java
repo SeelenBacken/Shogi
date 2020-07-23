@@ -318,7 +318,7 @@ public class Figure {
 	 * @return {@code true} if and only if
 	 *         {@code changeType != FigureType.UNDEFINED}, otherwise {@code false}.
 	 */
-	private boolean canChangeType() {
+	public boolean canChangeType() {
 		return changeType != FigureType.UNDEFINED;
 	}
 

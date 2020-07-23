@@ -11,7 +11,6 @@
 		<link rel="stylesheet" type="text/css" href="../css/MainStyle.css">
 		<link rel="stylesheet" type="text/css" href="../css/BoardStyle.css">
 		<link rel="stylesheet" type="text/css" href="../css/TraditionalPieceStyle.css" id="styleBoard">
-	
 	</head>
 	
 	<body>
@@ -210,7 +209,7 @@
 		                    </div>
 		                </nav>
 		            </div>
-		        </div>
+		        </div>		        
 		    </div>
 		    
 		</section>

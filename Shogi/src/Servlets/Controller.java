@@ -9,7 +9,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -103,16 +106,18 @@ public class Controller extends HttpServlet {
 				
 			} else {
 				
+				String userName = request.getParameter("Username");
+				
 				//Setting the Players name-attribute in the GameBean g according to the chosen team.
 				if(request.getParameter("PlayerColor").equals("Weiß")) {
-					g.getWhite().setName(request.getParameter("Username"));
+					g.getWhite().setName(userName);
 					g.setBlack(new AI(TeamType.BLACK));
 					
 					//The Black team starts. If the black team is the AI, the game starts with a random turn of the AI.
 					g.getBlack().doTurn(g.getBoard());
 					
 				} else {
-					g.getBlack().setName(request.getParameter("Username"));
+					g.getBlack().setName(userName);
 					g.setWhite(new AI(TeamType.WHITE));
 					
 				}
@@ -127,8 +132,6 @@ public class Controller extends HttpServlet {
 		} else if(referer.contains("board.jsp")) {
 			
 			//referer: board.jsp
-			
-//			g = (GameBean) request.getSession().getAttribute("g");
 			
 			//The variable player saves the Player-objcet which holds the non-computer-player.
 			Player player = (g.getBlack().getName().equals("AI")) ? g.getWhite() : g.getBlack();
@@ -399,6 +402,7 @@ public class Controller extends HttpServlet {
 			}
 			
 		}
+		
 	}
 	
 	

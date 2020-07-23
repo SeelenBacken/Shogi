@@ -531,7 +531,7 @@ public class GameBoard {
 			for (Vector2 currPos = Vector2.add(pos, dir); !isOutOfBounds(currPos); currPos = Vector2.add(currPos, dir)) {
 				if (team == ensureTeamTypeForPosition(currPos)) {
 					break;
-				} else if (TeamType.NONE != ensureTeamTypeForPosition(pos)) {
+				} else if (TeamType.NONE != ensureTeamTypeForPosition(currPos)) {
 					turns.add(currPos);
 					break;
 				}

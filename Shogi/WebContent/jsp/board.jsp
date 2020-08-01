@@ -14,7 +14,6 @@
 	</head>
 	
 	<body>
-		
 		<br>
 		<b style="font-size: 40pt; text-align: center;"><c:out value="${g.getBlack().getName().equals('AI') ? g.getWhite().getName() : g.getBlack().getName()}"></c:out> vs. Com</b>
 		
@@ -24,7 +23,7 @@
 		
 			<div style="margin-bottom: 30px;">
 		    
-		    	<form method="GET" action="http://localhost:8080/Shogi/Controller">	
+		    	<form method="GET" action="/Shogi/Controller">	
 		        
 			        <table>
 			        
@@ -118,7 +117,7 @@
 		            		
 		            		<c:forEach begin="0" end="8" var="j">
 		                		
-		                		<td id="${String.valueOf('ABCDEFGHI').charAt(j)}${8 - i}" ondragover="allowDrop(event)" ondrop="drop(event)">
+		                		<td id="${String.valueOf('ABCDEFGHI').charAt(j)}${8 - i}">
 		                			
 		                			<c:if test = "${g.getBoard().getBoard()[j][8 - i] != null}">
 			                			
@@ -215,281 +214,18 @@
 		</section>
 		
 		<script>
-			
-		    let fields = document.querySelectorAll('.playfield tr td')
-		    let pieceCounter = {
-		        king: 3,
-		        bishop: 3,
-		        gold: 3,
-		        silver: 3,
-		        knight: 3,
-		        lance: 3,
-		        rook: 3,
-		        pawn: 3,
-		    }
-		    
-		    function changeStyle(){
+		
+			function changeStyle(){
 				var aktuellerStyle = document.getElementById("styleBoard");
 				if(aktuellerStyle.getAttribute("href") === "../css/TraditionalPieceStyle.css"){
+					document.getElementById("styleInfo").innerhtml = "../css/ModernPieceStyle.css";
 					return aktuellerStyle.setAttribute("href", "../css/ModernPieceStyle.css");  
 				}
 				if(aktuellerStyle.getAttribute("href") === "../css/ModernPieceStyle.css"){
+					document.getElementById("styleInfo").innerhtml = "../css/TraditionalPieceStyle.css";
 					return aktuellerStyle.setAttribute("href", "../css/TraditionalPieceStyle.css");  
 				}
 			}
-		    
-		    function allowDrop(ev) {
-		        ev.preventDefault();
-		    }
-		    
-		    function drag(ev) {
-		    	
-		    	var xs = "Z";
-		    	var ys;
-		    	var id = ev.target.id;
-		    	
-		    	if(id == "bishop1"){
-		    		ys = -1;
-		    	} else if(id == "rook1"){
-		    		ys = -2;
-		    	} else if(id == "gold1"){
-		    		ys = -3;
-		    	} else if(id == "silver1"){
-		    		ys = -4;
-		    	} else if(id == "knight1"){
-		    		ys = -5;
-		    	} else if(id == "pawn1"){
-		    		ys = -6;
-		    	} else if(id == "lance1"){
-		    		ys = -7;
-		    	} 
-		    	
-		    	document.getElementById("xstart").innerHTML = xs;
-		    	document.getElementById("ystart").innerHTML = ys;
-		    	
-		        ev.dataTransfer.setData("text/plain", ev.target.id);
-		        
-		        fields.forEach(function (field) {
-		        	console.log(field.innerHTML);
-		        	if(field.innerHTML == "") {
-		        		console.log("empty");
-		        		field.classList.add('pHighlight');
-		            }
-		        });
-		    }
-		    
-		    function drop(ev) {
-		    	
-		        ev.preventDefault();
-		        let target = document.getElementById(ev.target.id);
-		        let hitter = document.getElementById(ev.dataTransfer.getData('text'));
-		        if(!checkTarget(target, hitter)){
-		        	return false;
-		        }
-		        movePiece(ev, target, hitter);
-		        fields.forEach(function (field) {
-		        	field.classList.remove('pHighlight');
-		        })
-		       
-		    }
-		    
-		    function checkTarget(target, hitter) {
-		    	if(target === hitter){
-		    		return false;
-		        } else if(target.classList.contains('p1Piece') && hitter.classList.contains('p1Piece')) {
-		        	return;
-		        } else if (target.hasChildNodes()) {
-		        	if(target.firstChild.classList.contains("p1Piece") && hitter.classList.contains("p1Piece")) {
-		        		alert("5");
-		        		return;
-		            }
-		        } else 
-		        	return true;
-		    }
-		    
-		    function movePiece(ev, target, hitter) {
-		        if(target.hasChildNodes()){
-		        	target.firstChild.remove();
-		        	target.appendChild(hitter);
-		        }else if(target.classList.contains('piece')){
-		        	target.parentNode.append(hitter);
-		        	hit(target, hitter);
-		        }else{
-		        	ev.target.appendChild(hitter);
-		        }
-		    }
-		    
-		    function newKing(playerNr) {
-		        let piece = document.createElement('div');
-		        piece.classList.add('piece');
-		        piece.classList.add('KING');
-		        piece.classList.add('p' + playerNr + 'Piece');
-		        piece.id = 'king' + pieceCounter.king;
-		        pieceCounter.king ++;
-		        piece.draggable = true;
-		        piece.setAttribute("ondragstart", "drag(event)");
-		        return piece;
-		    }
-		    
-		    function newBishop(playerNr) {
-		        let piece = document.createElement('div');
-		        piece.classList.add('piece');
-		        piece.classList.add('BISHOP');
-		        piece.classList.add('p' + playerNr + 'Piece');
-		        piece.id = 'bishop' + pieceCounter.bishop;
-		        pieceCounter.bishop ++;
-		        piece.draggable = true;
-		        piece.setAttribute("ondragstart", "drag(event)");
-		        return piece;
-		    }
-		    
-		    function newGold(playerNr) {
-		        let piece = document.createElement('div');
-		        piece.classList.add('piece');
-		        piece.classList.add('GOLDEN_GENERAL');
-		        piece.classList.add('p' + playerNr + 'Piece');
-		        piece.id = 'gold' + pieceCounter.gold;
-		        pieceCounter.gold ++;
-		        piece.draggable = true;
-		        piece.setAttribute("ondragstart", "drag(event)");
-		        return piece;
-		    }
-		    
-		    function newSilver(playerNr) {
-		        let piece = document.createElement('div');
-		        piece.classList.add('piece');
-		        piece.classList.add('SILVER_GENERAL');
-		        piece.classList.add('p' + playerNr + 'Piece');
-		        piece.id = 'silver' + pieceCounter.silver;
-		        pieceCounter.silver ++;
-		        piece.draggable = true;
-		        piece.setAttribute("ondragstart", "drag(event)");
-		        return piece;
-		    }
-		    
-		    function newKnight(playerNr) {
-		        let piece = document.createElement('div');
-		        piece.classList.add('piece');
-		        piece.classList.add('KNIGHT');
-		        piece.classList.add('p' + playerNr + 'Piece');
-		        piece.id = 'knight' + pieceCounter.knight;
-		        pieceCounter.knight ++;
-		        piece.draggable = true;
-		        piece.setAttribute("ondragstart", "drag(event)");
-		        return piece;
-		    }
-		    
-		    function newLance(playerNr) {
-		        let piece = document.createElement('div');
-		        piece.classList.add('piece');
-		        piece.classList.add('LANCE');
-		        piece.classList.add('p' + playerNr + 'Piece');
-		        piece.id = 'lance' + pieceCounter.lance;
-		        pieceCounter.lance ++;
-		        piece.draggable = true;
-		        piece.setAttribute("ondragstart", "drag(event)");
-		        return piece;
-		    }
-		    
-		    function newRook(playerNr) {
-		        let piece = document.createElement('div');
-		        piece.classList.add('piece');
-		        piece.classList.add('TOWER');
-		        piece.classList.add('p' + playerNr + 'Piece');
-		        piece.id = 'rook' + pieceCounter.rook;
-		        pieceCounter.rook ++;
-		        piece.draggable = true;
-		        piece.setAttribute("ondragstart", "drag(event)");
-		        return piece;
-		    }
-		    
-		    function newPawn(playerNr) {
-		        let piece = document.createElement('div');
-		        piece.classList.add('piece');
-		        piece.classList.add('PAWN');
-		        piece.classList.add('p' + playerNr + 'Piece');
-		        piece.id = 'pawn' + pieceCounter.pawn;
-		        pieceCounter.pawn ++;
-		        piece.draggable = true;
-		        piece.setAttribute("ondragstart", "drag(event)");
-		        return piece;
-		    }
-		    
-		    function hit(target, hitter){
-		        if(target.classList.contains("BISHOP")){
-		            let bishop;
-		            if(target.classList.contains("p1Piece")){
-		                bishop = document.querySelector('#bishop2');
-		            } else if (target.classList.contains("p2Piece")){
-		                bishop = document.querySelector('#bishop1');
-		            }
-		            let count = bishop.innerHTML;
-		            count ++;
-		            bishop.innerHTML = count;
-		        } else if (target.classList.contains("PAWN")){
-		            let pawn;
-		            if(target.classList.contains("p1Piece")){
-		                pawn = document.querySelector('#pawn2');
-		            } else if (target.classList.contains("p2Piece")){
-		                pawn = document.querySelector('#pawn1');
-		            }
-		            let count = pawn.innerHTML;
-		            count ++;
-		            pawn.innerHTML = count;
-		        } else if(target.classList.contains("GOLDEN_GENERAL")){
-		            let gold;
-		            if(target.classList.contains("p1Piece")){
-		                gold = document.querySelector('#gold2');
-		            } else if (target.classList.contains("p2Piece")){
-		                gold = document.querySelector('#gold1');
-		            }
-		            let count = gold.innerHTML;
-		            count ++;
-		            gold.innerHTML = count;
-		        } else if(target.classList.contains("SILVER_GENERAL")){
-		            let silver;
-		            if(target.classList.contains("p1Piece")){
-		                silver = document.querySelector('#silver2');
-		            } else if (target.classList.contains("p2Piece")){
-		                silver = document.querySelector('#silver1');
-		            }
-		            let count = silver.innerHTML;
-		            count ++;
-		            silver.innerHTML = count;
-		        } else if(target.classList.contains("KNIGHT")){
-		            let knight;
-		            if(target.classList.contains("p1Piece")){
-		                knight = document.querySelector('#knight2');
-		            } else if (target.classList.contains("p2Piece")){
-		                knight = document.querySelector('#knight1');
-		            }
-		            let count = knight.innerHTML;
-		            count ++;
-		            knight.innerHTML = count;
-		        } else if(target.classList.contains("LANCE")){
-		            let lance;
-		            if(target.classList.contains("p1Piece")){
-		                lance = document.querySelector('#lance2');
-		            } else if (target.classList.contains("p2Piece")){
-		                lance = document.querySelector('#lance1');
-		            }
-		            let count = lance.innerHTML;
-		            count ++;
-		            lance.innerHTML = count;
-		        } else if(target.classList.contains("TOWER")){
-		            let rook;
-		            if(target.classList.contains("p1Piece")){
-		                rook = document.querySelector('#rook2');
-		            } else if (target.classList.contains("p2Piece")){
-		                rook = document.querySelector('#rook1');
-		            }
-		            let count = rook.innerHTML;
-		            count ++;
-		            rook.innerHTML = count;
-		        }
-		        target.remove();
-		    }
-			
 		    
 		</script>
 

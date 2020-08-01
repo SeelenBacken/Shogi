@@ -21,7 +21,7 @@
 	
 	    <div id="content" class="form__group field">
 	    	
-	    	<form method="GET" action="http://localhost:8080/Shogi/Controller" name="form">
+	    	<form method="GET" action="/Shogi/Controller" name="form">
 				
 				<table>
 	    			<tr>

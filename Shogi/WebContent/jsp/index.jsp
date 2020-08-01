@@ -20,7 +20,7 @@
 	
 	    <div id="content">
 	    	
-	    	<form method="GET" action="http://localhost:8080/Shogi/Controller">
+	    	<form method="GET" action="/Shogi/Controller">
 				<input name="singleplayer" type="submit" value="Einzelspieler" class="Button" /><br><br>
 				<input name="multiplayer" type="submit" value="Mehrspieler" class="Button" /><br><br>
 				<input name="settings" type="image" value="Einstellungen" src="../res/settings.png" alt="Einstellungen" width="50" height="50" class="settingBt" />

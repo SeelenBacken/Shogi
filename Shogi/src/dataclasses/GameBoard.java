@@ -328,15 +328,21 @@ public class GameBoard {
 		int x = size / 2;
 		return new Vector2(x, y);
 	}
-
+	
 	/**
+	 * 
 	 * Places all figures on the board.
+	 * 
+	 * @param checkTest Set true if you want to place figures to test the method {@link isCheckMate()}.
+	 * 
 	 */
 	private void placeFigures() {
+		
 		whiteKingPos = getKingStartPosition(TeamType.WHITE);
 		blackKingPos = getKingStartPosition(TeamType.BLACK);
 		board[whiteKingPos.getX()][whiteKingPos.getY()] = Figure.getKing(TeamType.WHITE);
 		board[blackKingPos.getX()][blackKingPos.getY()] = Figure.getKing(TeamType.BLACK);
+		
 		for (int x = 0; x < size; x++) {
 			board[x][2] = Figure.getPawn(TeamType.WHITE);
 			board[x][size - 3] = Figure.getPawn(TeamType.BLACK);
@@ -361,6 +367,7 @@ public class GameBoard {
 				board[x][size - 1] = Figure.getGoldenGeneral(TeamType.BLACK);
 			}
 		}
+		
 	}
 
 	/**
